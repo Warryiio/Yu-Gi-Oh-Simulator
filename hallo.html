@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
+  <script>
+    $(function(){
+      $("#changeImageBtn").click(function(){
+        var numb= $("#cardid").val();
+        $.ajax({
+        url:"https://db.ygoprodeck.com/api/v7/cardinfo.php",
+        method:"get",
+        success: function(alCards){
+          console.log(alCards.data);
+          console.log(alCards.data[numb].card_images[0].image_url_small);
+          $("#cardpicture").attr("src",alCards.data[numb].card_images[0].image_url_small);
+        },
+      });
+      });
+    });
+  </script>
+
+  <script>
+    $(function(){
+      $("#addImage").click(function(){
+        var numb= $("#cardid").val();
+        $.ajax({
+        url:"https://db.ygoprodeck.com/api/v7/cardinfo.php",
+        method:"get",
+        success: function(alCards){
+          console.log(alCards.data[numb].ban_goat);
+          var url= alCards.data[numb].card_images[0].image_url_small
+         let image= document.createElement("img");
+           console.log(image);
+            image.src =url;
+           document.getElementById("test").append(image);
+            
+        },
+      });
+      });
+    });
+  </script>
+  <script>
+    $(function(){
+      $("#fade").click(function() {
+          $("#cardpicture").fadeToggle(400);
+      });
+    });
+  </script>
+  <script>
+    $(function(){
+      $("#hide").click(function() {
+          $("#cardpicture").toggle(400);
+      });
+    });
+  </script>
+  </script>
+  <script>
+    $(function(){
+      $("#hideall").click(function() {
+          $(".images").toggle(400);
+      });
+    });
+  </script>
+
+</head>
+
+<body>
+  <input type="number" id="cardid">
+  <button id="changeImageBtn">Change Image</button>
+  <button id="addImage">Add Image</button>
+  <button id="fade">Fade In/Out</button>
+  <button id="hide">Hide/Show</button>
+<button id="hideall">Hide all</button>
+  
+  <div class="images" id="test">
+    <img src="https://static.efantasy.gr/products/140614/140614-0-0000-yu-gi-oh-konami-japanese-small-size-card-sleeves-50ct-card-back.jpg" id="cardpicture"/>
+  </div>
+</body>
+
+</html>
