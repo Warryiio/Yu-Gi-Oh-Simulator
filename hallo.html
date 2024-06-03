@@ -17,7 +17,7 @@
   <script>
     $(function(){
       $("#changeImageBtn").click(function(){
-        var numb= $("#drag1").val();
+        var numb= $("#ycard").val();
         $.ajax({
         url:"https://db.ygoprodeck.com/api/v7/cardinfo.php",
         method:"get",
@@ -112,7 +112,7 @@
     <img src="" draggable="true" ondragstart="drag(event)" id="drag2" >
   </div>
   
-
+  <img src="https://static.efantasy.gr/products/140614/140614-0-0000-yu-gi-oh-konami-japanese-small-size-card-sleeves-50ct-card-back.jpg"draggable="true" ondragstart="drag(event)" id="ycard">
 </body>
 
 </html>
