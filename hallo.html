@@ -17,7 +17,7 @@
   <script>
     $(function(){
       $("#changeImageBtn").click(function(){
-        var numb= $("cardid").val();
+        var numb= $("#cardid").val();
         $.ajax({
         url:"https://db.ygoprodeck.com/api/v7/cardinfo.php",
         method:"get",
