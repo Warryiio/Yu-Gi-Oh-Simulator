@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,7 @@
   <style>
     #div1 {
       width: 350px;
-      height: 70px;
+      height: 500px;
       padding: 10px;
       border: 1px solid #aaaaaa;
     }
@@ -62,22 +62,23 @@
          let image= document.createElement("img");
            console.log(image);
             image.src =url;
-            image.draggable="true"
-           document.getElementById("test").append(image);
+            image.draggable="true";
+           document.getElementById("#div1").append(image);
             
         },
       });
       });
     });
   </script>
+  
   <script>
     $(function(){
       $("#fade").click(function() {
-          $("#cardpicture").fadeToggle(400);
+          $("drag1").fadeToggle(400);
       });
     });
   </script>
-    //hide
+  
   <script>
     $(function(){
       $("#hide").click(function() {
@@ -105,10 +106,13 @@
 <button id="hideall">Hide all</button>
   
   <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <img src="https://static.efantasy.gr/products/140614/140614-0-0000-yu-gi-oh-konami-japanese-small-size-card-sleeves-50ct-card-back.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+    <img src="https://static.efantasy.gr/products/140614/140614-0-0000-yu-gi-oh-konami-japanese-small-size-card-sleeves-50ct-card-back.jpg" draggable="true" ondragstart="drag(event)" id="drag1" >
+  </div>
+  <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="" draggable="true" ondragstart="drag(event)" id="drag2" >
   </div>
   
-  <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
 </body>
 
 </html>
