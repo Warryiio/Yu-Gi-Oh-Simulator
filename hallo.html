@@ -17,14 +17,14 @@
   <script>
     $(function(){
       $("#changeImageBtn").click(function(){
-        var numb= $("#ycard").val();
+        var numb= $("cardid").val();
         $.ajax({
         url:"https://db.ygoprodeck.com/api/v7/cardinfo.php",
         method:"get",
         success: function(alCards){
           console.log(alCards.data);
           console.log(alCards.data[numb].card_images[0].image_url_small);
-          $("#cardpicture").attr("src",alCards.data[numb].card_images[0].image_url_small);
+          $("#drag1").attr("src",alCards.data[numb].card_images[0].image_url_small);
           $("#cardpicture").attr("draggable",true);
           $("#cardpicture").attr("ondragstart",drag(event));
           $("#cardpicture").attr("id",drag1);
