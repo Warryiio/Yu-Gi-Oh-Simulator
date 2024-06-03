@@ -25,9 +25,7 @@
           console.log(alCards.data);
           console.log(alCards.data[numb].card_images[0].image_url_small);
           $("#drag1").attr("src",alCards.data[numb].card_images[0].image_url_small);
-          $("#cardpicture").attr("draggable",true);
-          $("#cardpicture").attr("ondragstart",drag(event));
-          $("#cardpicture").attr("id",drag1);
+
         },
       });
       });
@@ -63,7 +61,7 @@
            console.log(image);
             image.src =url;
             image.draggable="true";
-           document.getElementById("#div1").append(image);
+           document.getElementById("#drag1").append(image);
             
         },
       });
