@@ -10,11 +10,18 @@
         $(document).ready(function() {
     let selectedCards = [];
 
-    // Fetch cards from the API
-    $.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', function(cards) {
-        cards.forEach(card => {
-            $('#card-list').append(`<li data-id="${card.id}">${card.name} <button class="add-card">Add</button></li>`);
-        });
+    // Fetch cards from the API using AJAX
+    $.ajax({
+        url: '/api/cards',
+        method: 'GET',
+        success: function(cards) {
+            cards.forEach(card => {
+                $('#card-list').append(`<li data-id="${card.id}">${card.name} <button class="add-card">Add</button></li>`);
+            });
+        },
+        error: function(error) {
+            console.error('Error fetching cards:', error);
+        }
     });
 
     // Add card to the selected list
@@ -43,7 +50,7 @@
         if (deckName && selectedCards.length > 0) {
             $.ajax({
                 type: 'POST',
-                url: '/api/decks/save',
+                url: '/https://db.ygoprodeck.com/api/v7/cardinfo.php',
                 contentType: 'application/json',
                 data: JSON.stringify({
                     name: deckName,
