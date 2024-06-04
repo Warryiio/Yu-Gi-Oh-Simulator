@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yu-Gi-Oh! Deck Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+   <script>
+        $(document).ready(function() {
+    let selectedCards = [];
+
+    // Fetch cards from the API
+    $.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', function(cards) {
+        cards.forEach(card => {
+            $('#card-list').append(`<li data-id="${card.id}">${card.name} <button class="add-card">Add</button></li>`);
+        });
+    });
+
+    // Add card to the selected list
+    $(document).on('click', '.add-card', function() {
+        const cardId = $(this).parent().data('id');
+        const cardName = $(this).parent().text().replace(' Add', '');
+
+        if (!selectedCards.includes(cardId)) {
+            selectedCards.push(cardId);
+            $('#selected-cards').append(`<li data-id="${cardId}">${cardName} <button class="remove-card">Remove</button></li>`);
+        }
+    });
+
+    // Remove card from the selected list
+    $(document).on('click', '.remove-card', function() {
+        const cardId = $(this).parent().data('id');
+        selectedCards = selectedCards.filter(id => id !== cardId);
+        $(this).parent().remove();
+    });
+
+    // Save the deck
+    $('#save-deck').click(function() {
+        const deckName = $('#deck-name').val();
+        const userId = 1; // Replace with actual user ID
+
+        if (deckName && selectedCards.length > 0) {
+            $.ajax({
+                type: 'POST',
+                url: '/api/decks/save',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    name: deckName,
+                    userId: userId,
+                    cardIds: selectedCards
+                }),
+                success: function(response) {
+                    if (response.status === 'success') {
+                        alert('Deck saved successfully!');
+                    } else {
+                        alert('Failed to save deck: ' + response.message);
+                    }
+                },
+                error: function() {
+                    alert('Failed to save deck.');
+                }
+            });
+        } else {
+            alert('Please provide a deck name and select at least one card.');
+        }
+    });
+});
+   </script>
+</head>
+<body>
+    <h1>Yu-Gi-Oh! Deck Builder</h1>
+    <div>
+        <input type="text" id="deck-name" placeholder="Deck Name">
+        <button id="save-deck">Save Deck</button>
+    </div>
+    <div>
+        <h2>Available Cards</h2>
+        <ul id="card-list"></ul>
+    </div>
+    <div>
+        <h2>Selected Cards</h2>
+        <ul id="selected-cards"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
