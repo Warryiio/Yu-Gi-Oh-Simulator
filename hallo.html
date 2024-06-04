@@ -71,16 +71,18 @@
   
   <script>
     $(function(){
-      $("#fade").click(function() {
-          $("#drag1").fadeToggle(400);
+      //Button den man anklickt
+      $("#fadeButton").click(function() {
+        //Bild das verschwindet
+          $("#picture1").fadeToggle(400);
       });
     });
   </script>
   
   <script>
     $(function(){
-      $("#hide").click(function() {
-          $("#drag1").toggle(400);
+      $("#hideButton").click(function() {
+          $("#picture1").toggle(400);
       });
     });
   </script>
@@ -99,12 +101,12 @@
   <input type="number" id="cardid">
   <button id="changeImageBtn">Change Image</button>
   <button id="addImage">Add Image</button>
-  <button id="fade">Fade In/Out</button>
-  <button id="hide">Hide/Show</button>
+  <button id="fadeButton">Fade In/Out</button>
+  <button id="hideButton">Hide/Show</button>
 <button id="hideall">Hide all</button>
   
   <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <img src="https://static.efantasy.gr/products/140614/140614-0-0000-yu-gi-oh-konami-japanese-small-size-card-sleeves-50ct-card-back.jpg" draggable="true" ondragstart="drag(event)" id="drag1" >
+    <img src="https://static.efantasy.gr/products/140614/140614-0-0000-yu-gi-oh-konami-japanese-small-size-card-sleeves-50ct-card-back.jpg" draggable="true" ondragstart="drag(event)" id="picture1" >
   </div>
   <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
     <img src="" draggable="true" ondragstart="drag(event)" id="drag2" >
