@@ -12,7 +12,7 @@
 
     // Fetch cards from the API using AJAX
     $.ajax({
-        url: '/api/cards',
+        url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php',
         method: 'GET',
         success: function(cards) {
             cards.forEach(card => {
