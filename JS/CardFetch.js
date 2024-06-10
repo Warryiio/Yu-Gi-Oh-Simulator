@@ -23,8 +23,9 @@ $(document).ready(function() {
     $(document).on('click', '.add-card', function() {
         const cardId = $(this).parent().data('id');
         const cardName = $(this).parent().text().replace(' Add', '');
-
+        const
         if (!selectedCards.includes(cardId)) {
+            console.log(cardId);
             selectedCards.push(cardId);
             let img= document.createElement("img");
                 img.src= cardId.card_images[0].image_url_small;
