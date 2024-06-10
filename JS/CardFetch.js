@@ -7,7 +7,6 @@ $(document).ready(function() {
         method: 'GET',
         success: function(cards) {
             var i=0;
-            console.log(cards.data.find("Exodia"));
             cards.data.forEach(card => {
                 let img= document.createElement("img");
                 img.src= card.card_images[0].image_url_small;
