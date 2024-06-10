@@ -23,12 +23,18 @@ $(document).ready(function() {
     $(document).on('click', '.add-card', function() {
         const cardId = $(this).parent().data('id');
         const cardName = $(this).parent().text().replace(' Add', '');
+        const cardImage = $(this).siblings('img').attr('src');
+
         if (!selectedCards.includes(cardId)) {
-            console.log(cardId);
             selectedCards.push(cardId);
-            $('#selected-cards').append(`<li data-id="${cardId}">${cardName} <button class="remove-card">Remove</button></li>`);
+            $('#selected-cards').append(`
+                <li data-id="${cardId}">
+                    <img src="${cardImage}" alt="${cardName}" width="100">
+                    ${cardName} 
+                    <button class="remove-card">Remove</button>
+                </li>
+            `);
         }
     });
-
 
 });
