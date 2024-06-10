@@ -26,9 +26,12 @@ $(document).ready(function() {
 
         if (!selectedCards.includes(cardId)) {
             selectedCards.push(cardId);
+            let img= document.createElement("img");
+                img.src= cardId.card_images[0].image_url_small;
+                $("#selected-cards").append(img);
             $('#selected-cards').append(`<li data-id="${cardId}">${cardName} <button class="remove-card">Remove</button></li>`);
         }
     });
 
-    
+
 });
