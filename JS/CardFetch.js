@@ -18,4 +18,17 @@ $(document).ready(function() {
             console.error('Error fetching cards:', error);
         }
     });
+
+    // Add card to the selected list
+    $(document).on('click', '.add-card', function() {
+        const cardId = $(this).parent().data('id');
+        const cardName = $(this).parent().text().replace(' Add', '');
+
+        if (!selectedCards.includes(cardId)) {
+            selectedCards.push(cardId);
+            $('#selected-cards').append(`<li data-id="${cardId}">${cardName} <button class="remove-card">Remove</button></li>`);
+        }
+    });
+
+    
 });
