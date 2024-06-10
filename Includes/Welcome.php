@@ -59,7 +59,7 @@ body {
 </style>
 <script>
         function redirectToPage() {
-            window.location.href = "/Yu-Gi-Oh-Simulator/Deck Builder.html";
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Deck Builder.html";
         }
     </script>
 </head>
