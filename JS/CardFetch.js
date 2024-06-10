@@ -27,13 +27,8 @@ $(document).ready(function() {
 
         if (!selectedCards.includes(cardId)) {
             selectedCards.push(cardId);
-            $('#selected-cards').append(`
-                <li data-id="${cardId}">
-                    <img src="${cardImage}" alt="${cardName}" width="100">
-                    ${cardName} 
-                    <button class="remove-card">Remove</button>
-                </li>
-            `);
+            
+            console.log(cardId);
         }
     });
 
