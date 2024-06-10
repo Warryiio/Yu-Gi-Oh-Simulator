@@ -57,6 +57,11 @@ body {
 
 
 </style>
+<script>
+        function redirectToPage() {
+            window.location.href = "/Yu-Gi-Oh-Simulator/Deck Builder.html";
+        }
+    </script>
 </head>
 <body>
 
@@ -64,7 +69,7 @@ body {
 
 <button class="home">Home</button>
 <button class="play">Play</button>
-<button class="cards">Decks and Cards</button>
+<button onclick="redirectToPage()" class="cards">Decks and Cards</button>
 <!--<img src="https://images.wallpapersden.com/image/download/neon-gradient-minimalist_bGVlZmaUmZqaraWkpJRmbmdlrWZlbWU.jpg" alt="Yes"> -->
 <!--  <a class="active" href="#home">Home</a>
   <a href="#news">News</a>
