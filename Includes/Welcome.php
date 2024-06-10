@@ -58,8 +58,16 @@ body {
 
 </style>
 <script>
-        function redirectToPage() {
+        function redirectToDecksAndCards() {
             window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Deck Builder.html";
+        }
+
+        function redirectToPlay() {
+            window.location.href = "/Yu-Gi-Oh-Simulator/CSS/Play.html";
+        }
+
+        function redirectToHome() {
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Welcome.php";
         }
     </script>
 </head>
@@ -67,9 +75,9 @@ body {
 
 <div class="topnav">
 
-<button class="home">Home</button>
-<button class="play">Play</button>
-<button onclick="redirectToPage()" class="cards">Decks and Cards</button>
+<button onclick="redirectToHome()" class="home">Home</button>
+<button onclick="redirectToPlay()" class="play">Play</button>
+<button onclick="redirectToDecksAndCards()" class="cards">Decks and Cards</button>
 <!--<img src="https://images.wallpapersden.com/image/download/neon-gradient-minimalist_bGVlZmaUmZqaraWkpJRmbmdlrWZlbWU.jpg" alt="Yes"> -->
 <!--  <a class="active" href="#home">Home</a>
   <a href="#news">News</a>
