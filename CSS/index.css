@@ -4,7 +4,7 @@
 body {
     background-color: black;
     color: antiquewhite;
-    font-family: 'Public Pixel';
+    font: 'Public Pixel';
     display: flex;
     flex-direction: column;
     align-items: center;
