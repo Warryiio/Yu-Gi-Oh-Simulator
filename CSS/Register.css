@@ -10,10 +10,56 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* To vertically center the content */
+    height: 70vh; /* To vertically center the content */
     margin: 0; /* Remove default margin */
     background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWdwaXcya2Z4YTIxMzZvMm42bTcxa2p2dGxhc2tmZm83ZjVibmxjOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3og0IFrHkIglEOg8Ba/giphy.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Ensures the background covers the entire viewport */
 }
+h1 {
+    color: white;
+    font-family: "Pixel", sans-serif;
+    font-size: 80px;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: darkblue;
+}
+.register-container {
+    margin-top: 50px;
+     
+}
+input[type=text], select {
+    transform: translateX(-15%);
+    width: 150%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+input[type=password], select {
+    transform: translateX(-15%);
+    width: 150%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.button, .registerButton{
+    width:200px;
+
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+  
