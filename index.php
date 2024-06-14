@@ -16,7 +16,7 @@
     <h2>Register</h2>
     
     <div class="input-container">
-        <label for="nameOrEmail">Name/Email l:</label>
+        <label for="nameOrEmail">Username/Email :</label>
         <input type="text" id="nameOrEmail" name="nameOrEmail" oninput="checkInput()">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password"> 
@@ -35,7 +35,7 @@
             if (input.includes("@")) {
                 loginButton.innerText = "Login with Email";
             } else {
-                loginButton.innerText = "Login with Name";
+                loginButton.innerText = "Login with Username";
             }
 
             // Enable the login button
