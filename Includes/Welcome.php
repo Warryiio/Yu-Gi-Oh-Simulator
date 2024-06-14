@@ -63,7 +63,7 @@ body {
         }
 
         function redirectToPlay() {
-            window.location.href = "/Yu-Gi-Oh-Simulator/CSS/Play.html";
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/PlayField.html";
         }
 
         function redirectToHome() {
