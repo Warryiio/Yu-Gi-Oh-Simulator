@@ -6,7 +6,6 @@
 body {
     background-color: black;
     color: antiquewhite;
-    font-family: 'Pixel';
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,9 +20,8 @@ body {
 h1 {
     color: white;
     font-size: 60px;
+    font-family: 'Pixel', sans-serif;
     margin: 0 0 20px; /* Add margin below the title */
-    -webkit-text-stroke-width: 3px;
-    -webkit-text-stroke-color: crimson;
 }
 h2 {
     font-size: 30px;
