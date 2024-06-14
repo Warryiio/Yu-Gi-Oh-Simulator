@@ -11,7 +11,7 @@ $(document).ready(function() {
                 let img= document.createElement("img");
                 img.src= card.card_images[0].image_url_small;
                 $("#card-list").append(img);
-                $('#card-list').append(`<li data-id="${card.id}">${card.name} <button class="add-card">Add</button></li>`);
+                $('#card-list').append(`<div class="cards" data-id="${card.id}">${card.name} <button class="add-card">Add</button></div>`);
             });
         },
         error: function(error) {

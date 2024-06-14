@@ -2,9 +2,18 @@ body { font-family: Arial, sans-serif; }
 #card-list, #selected-cards, #saved-decks { list-style: none; padding: 0; }
 #card-list li, #selected-cards li, #saved-decks li { margin: 5px 0; }
 button { margin-left: 10px; }
-#card-list {
-    width: 300px; /* Set the width of the div */ 
-  height: 500px; /* Set the height of the div */ 
+.card-list-container {
+  display: grid;
+  padding: 2px;
+  grid-template-columns: auto auto auto;
   overflow: auto; /* Add scrollbars when content overflows */ 
+}
 
-  }
+.cards {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  
+  font-size: 30px;
+  width: 300px; /* Set the width of the div */ 
+  height: 500px; /* Set the height of the div */ 
+
+}
