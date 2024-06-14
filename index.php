@@ -15,37 +15,20 @@
 <body>
     <h1>YU-GI-OH</h1>
     <h2>Register</h2>
-    
+    <form class="" action="" method="post" autocomplete="off">
     <div class="input-container">
-        <label for="nameOrEmail">Username/Email :</label>
-        <input type="text" id="nameOrEmail" name="nameOrEmail" oninput="checkInput()">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"> 
+        <input type="text" id="usernameOrEmail" name="nameOrEmail" placeholder="Username or Email">
+        <input type="password" id="password" name="password" placeholder="Password" > 
     </div>
     <div class="button-container">
-        <button onclick="redirectToPage()" class="button" id="loginButton" disabled>Login</button>
-        <button class="buttonsignup" id="signupButton">Sign Up</button>
+        <button class="button" id="loginButton" >Login</button>
+        <button onclick="redirectToPage()" class="buttonsignup" id="signupButton">Sign Up</button>
     </div>
+    </form>
 
-    <script>
-        function checkInput() {
-            var input = document.getElementById("nameOrEmail").value;
-            var loginButton = document.getElementById("loginButton");
-
-            // Check if input contains "@" to determine if it's an email
-            if (input.includes("@")) {
-                loginButton.innerText = "Login with Email";
-            } else {
-                loginButton.innerText = "Login with Username";
-            }
-
-            // Enable the login button
-            loginButton.disabled = false;
-        }
-    </script>
     <script>
         function redirectToPage() {
-            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Welcome.php";
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Registration.php";
         }
     </script>
 </body>

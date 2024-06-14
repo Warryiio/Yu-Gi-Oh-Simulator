@@ -20,13 +20,21 @@ body {
 h1 {
     color: white;
     font-family: "Pixel", sans-serif;
+    font-size: 100px;
     margin: 0 0 20px; /* Add margin below the title */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: crimson;
 }
 h2 {
+    color: white;
+    font-family: "Pixel", sans-serif;
     font-size: 30px;
     margin: 20px 0; /* Add margin above and below the subtitle */
 }
 label, input {
+    
+    width: 90%;
+    padding:12px 20px;
     margin: 10px 0; /* Add margin between labels and inputs */
 }
 .button-container {
@@ -35,6 +43,7 @@ label, input {
     gap: 10px; /* Add space between buttons */
 }
 .button, .buttonsignup {
+    width:250px;
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -46,6 +55,12 @@ label, input {
     cursor: pointer;
     border-radius: 8px;
 }
+.button {
+    margin-left: 50%;
+    transform: translateX(-100%);
+}
 .buttonsignup {
+
     background-color: #008CBA; /* Blue */
+    transform: translateX(-100%);
 }

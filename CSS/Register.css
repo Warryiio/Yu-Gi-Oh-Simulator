@@ -1,0 +1,19 @@
+@font-face{
+    font-family: Pixel;
+    src:url(PublicPixel.ttf);
+}
+
+body {
+    background-color: black;
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* To vertically center the content */
+    margin: 0; /* Remove default margin */
+    background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWdwaXcya2Z4YTIxMzZvMm42bTcxa2p2dGxhc2tmZm83ZjVibmxjOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3og0IFrHkIglEOg8Ba/giphy.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background covers the entire viewport */
+}
