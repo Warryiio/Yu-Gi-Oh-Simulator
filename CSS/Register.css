@@ -1,6 +1,6 @@
 @font-face{
     font-family: Pixel;
-    src:url(/Yu-Gi-Oh-Simulator/Fonts/PublicPixel.ttf);
+    src:url(/Yu-Gi-Oh-Simulator/CSS/Fonts/PublicPixel.ttf);
 }
 
 body {
@@ -12,12 +12,13 @@ body {
     justify-content: center;
     height: 70vh; /* To vertically center the content */
     margin: 0; /* Remove default margin */
-    background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWdwaXcya2Z4YTIxMzZvMm42bTcxa2p2dGxhc2tmZm83ZjVibmxjOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3og0IFrHkIglEOg8Ba/giphy.webp');
+    background-image: url('/Yu-Gi-Oh-Simulator/images/Background.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Ensures the background covers the entire viewport */
 }
 h1 {
+
     color: white;
     font-family: "Pixel", sans-serif;
     font-size: 80px;
@@ -29,7 +30,7 @@ h1 {
      
 }
 input[type=text], select {
-    transform: translateX(-15%);
+    transform: translateX(-18%);
     width: 150%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -39,7 +40,7 @@ input[type=text], select {
     box-sizing: border-box;
   }
 input[type=password], select {
-    transform: translateX(-15%);
+    transform: translateX(-18%);
     width: 150%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -61,5 +62,49 @@ input[type=password], select {
     font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
+}
+.popup{
+    width: 613px;
+    height: 300px;
+    background: white;
+    border-radius: 6px;
+    position:absolute;
+    top: 0%;
+    left:50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color:#333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+}
+.popup img {
+    
+    margin-top:-50px;
+    border-radius: 50%;
+    box-shadow : 0 2px 5px rgba(0,0,0,0.2);
+}
+.popup h2 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+.popup button{
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color:white;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow : 0 5px 5px rgba(0,0,0,0.2);
 }
   

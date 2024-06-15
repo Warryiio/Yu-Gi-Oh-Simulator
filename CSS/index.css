@@ -1,6 +1,6 @@
 @font-face{
     font-family: Pixel;
-    src:url(/Yu-Gi-Oh-Simulator/Fonts/PublicPixel.ttf);
+    src:url(/Yu-Gi-Oh-Simulator/CSS/Fonts/PublicPixel.ttf);
 }
 
 body {
@@ -12,7 +12,7 @@ body {
     justify-content: center;
     height: 100vh; /* To vertically center the content */
     margin: 0; /* Remove default margin */
-    background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWdwaXcya2Z4YTIxMzZvMm42bTcxa2p2dGxhc2tmZm83ZjVibmxjOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3og0IFrHkIglEOg8Ba/giphy.webp');
+    background-image: url('/Yu-Gi-Oh-Simulator/images/Background.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Ensures the background covers the entire viewport */
