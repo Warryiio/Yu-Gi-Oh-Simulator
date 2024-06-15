@@ -8,6 +8,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background-image: url('https://jooinn.com/images/empty-space-1.png');
 }
 
 .topnav {
@@ -91,8 +92,29 @@ body {
 
 
 </div>
+<style>
+header {
+  background-image: url('https://jooinn.com/images/empty-space-1.png');
+}
+body {
+  background-image: url('https://jooinn.com/images/empty-space-1.png');
+}
+body {
+  background-color: lightgrey;
+  color: white;
+}
+Home page{
+  color: grey;
+}
+</style>
 <h1>Welcome to our page !</h1>
-<p>Simulate battles with our website!</p>
+<h2>Simulate battles with our website!</h2><br>
+<h2 id="Home page">This is the home page, where you can freely navigate through our other sections</h2><br>
+<h2>The play section is where you access the actual game with the Deck you've built</h2><br>
+<h2>The Decks and cards section is where you can see all the available cards and build and save a deck that is linked to your account</h2><br>
+<!-- <img src="https://wallpaperaccess.com/full/188687.jpg" alt="background"> 
+https://jooinn.com/images/empty-space-1.png
+https://farm4.staticflickr.com/3895/14894440797_30b2d83d87_b.jpg -->
 
 </body>
 </html>
