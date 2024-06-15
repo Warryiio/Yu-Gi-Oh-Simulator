@@ -8,12 +8,13 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url('https://jooinn.com/images/empty-space-1.png');
+  
 }
 
 .topnav {
   overflow: hidden;
   background-color: #BDBDBD;
+  background-image: url('https://jooinn.com/images/empty-space-1.png');
 }
 
 .home {
@@ -52,9 +53,24 @@ body {
   transition: 0.3s;
 }
 
-.home:hover {opacity: 1}
-.play:hover {opacity: 1}
+.logout {
+  background-color: #451A6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  
+}
+
+
+.home:hover  {opacity: 1}
+.play:hover  {opacity: 1}
 .cards:hover {opacity: 1}
+.logout:hover{opacity: 1}
 
 
 </style>
@@ -70,6 +86,10 @@ body {
         function redirectToHome() {
             window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Welcome.php";
         }
+
+        function redirectToLogin() {
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Registration.php";
+        }
     </script>
 </head>
 <body>
@@ -79,6 +99,8 @@ body {
 <button onclick="redirectToHome()" class="home">Home</button>
 <button onclick="redirectToPlay()" class="play">Play</button>
 <button onclick="redirectToDecksAndCards()" class="cards">Decks and Cards</button>
+<button onclick="redirectToLogin()" class="logout">Logout</button>
+
 <!--<img src="https://images.wallpapersden.com/image/download/neon-gradient-minimalist_bGVlZmaUmZqaraWkpJRmbmdlrWZlbWU.jpg" alt="Yes"> -->
 <!--  <a class="active" href="#home">Home</a>
   <a href="#news">News</a>
