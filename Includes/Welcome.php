@@ -1,3 +1,6 @@
+<class?php
+  @include('../php/checkSession.php'); 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,12 +97,12 @@ body {
 </head>
 <body>
 
-<div class="topnav">
+<class="topnav">
 
 <button onclick="redirectToHome()" class="home">Home</button>
 <button onclick="redirectToPlay()" class="play">Play</button>
 <button onclick="redirectToDecksAndCards()" class="cards">Decks and Cards</button>
-<button onclick="redirectToLogin()" class="logout">Logout</button>
+<a href="/Yu-Gi-Oh-Simulator/php/logout.php"> <button  class="logout">Logout</button> </a>
 
 <!--<img src="https://images.wallpapersden.com/image/download/neon-gradient-minimalist_bGVlZmaUmZqaraWkpJRmbmdlrWZlbWU.jpg" alt="Yes"> -->
 <!--  <a class="active" href="#home">Home</a>
@@ -129,7 +132,7 @@ Home page{
   color: grey;
 }
 </style>
-<h1>Welcome to our page !</h1>
+<h1>Welcome <?php echo "$_SESSION['username']" ?> to our page !</h1>
 <h2>Simulate battles with our website!</h2><br>
 <h2 id="Home page">This is the home page, where you can freely navigate through our other sections</h2><br>
 <h2>The play section is where you access the actual game with the Deck you've built</h2><br>
