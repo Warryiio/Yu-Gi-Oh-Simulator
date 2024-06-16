@@ -14,70 +14,68 @@
 
 </head>
 <body>
-    <?php    
-        include ('php/connect.php');
-        if(isset($_POST['submit'])) {
-            $username= $_POST['username'];
-            $email = $_POST['email'];
-            $password =$_POST['password'];
-
-            $verify_query = mysqli_query($connection, "SELECT dtEmail FROM tblUsers WHERE dtEmail='$email'");
-
-            if(mysqli_num_rows($verify_query) !=0)  {
-                error();
-            } else {
-                mysqli_query($connection,"INSERT INTO tblUsers(dtUsername,dtEmail,dtPassword) VALUES('$username','$email','$password')") or die("Error Occured");
-                success();
-            }
-        } else {
-
-    ?>
+    
 
     <h1>Register</h1>
 
-    <form>
+    <form action="/Yu-Gi-Oh-Simulator/php/register.php" method="post" autocomplete="off">
         <div class="register-container">
-            <input type="text" id="username" placeholder="Username" required>
+            <input type="text" id="username" name="username" placeholder="Username" required>
             <br>
-            <input type="text" id="email" placeholder="E-Mail" required>
+            <input type="text" id="email" name="email" placeholder="E-Mail" pattern=".*@.*" title="Please include an '@' in the email address." required>
             <br>
-            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
             <br>
             <button onclick="redirectToPage()" type="button" class="button">Go Back</button>
-            <button type="submit" class="registerButton">Register</button>
+            <button type="submit" name="submit" class="registerButton" required>Register</button>
         </div>
     </form>
 
     <div class=popup id="popup">
         <img id="status" height src="" width="150" />
-        <h2 id="message"></h2>
+        <h3 id="message"></h3>
         <p id="details"></p>
         <button type="button" onclick="closePopup()">OK</button>
     </div>
-    <?php }?>
 
     <script>
         let popup= document.getElementById("popup");
-    function openPopup() {
-        popup.classList.add("open-popup");
+        // Gibt den div popup die Klasse open-popup und wird dadruch sichtbar
+        function openPopup() {
+            popup.classList.add("open-popup");
 
-    }
-    function closePopup() {
-        popup.classList.remove("open-popup");
-    }
-
-    function error() {
-        document.getElementById("status").src= "/Yu-Gi-Oh-Simulator/images/red.png";
-        document.getElementById("message").innerHTML = "Something went wrong";
-        document.getElementById("details").innerHTML = "Your Username or Email is already used";
-        openPopup();
-    }
-    function success() {
-        document.getElementById("status").src= "/Yu-Gi-Oh-Simulator/images/green.png";
-        document.getElementById("message").innerHTML = "Thank you";
-        document.getElementById("details").innerHTML = "Your Account has been created";
-        openPopup();
-    }
+        }
+        // Entfernt den div popup die Klasse open-popup und wird dadruch unsichtbar
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+        // Ändert die Texten und den src vom Bild
+        function error() {
+            document.getElementById("status").src= "/Yu-Gi-Oh-Simulator/images/red.png";
+            document.getElementById("message").innerHTML = "Something went wrong";
+            document.getElementById("details").innerHTML = "Your Username or Email is already used";
+            openPopup();
+        }
+        function success() {
+            document.getElementById("status").src= "/Yu-Gi-Oh-Simulator/images/green.png";
+            document.getElementById("message").innerHTML = "Thank you";
+            document.getElementById("details").innerHTML = "Your Account has been created";
+            openPopup();
+        }
     </script>
+    <?php if (isset($_GET['success']) && $_GET['success'] == 'true') { ?>
+        <script>
+            $(document).ready(function() {
+            success();
+            });
+        </script>
+    <?php } ?>
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'true') { ?>
+        <script>
+            $(document).ready(function() {
+            error();
+            });
+        </script>
+    <?php } ?>
 </body>
 </html>
