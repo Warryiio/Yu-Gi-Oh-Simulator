@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YU-GI-OH</title>
-    <link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/index.css">
+    <link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/Login.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -21,6 +21,7 @@
         <input type="text" id="email" name="email" placeholder="Email" required>
         <input type="password" id="password" name="password" placeholder="Password" required> 
     </div>
+    
     <div class="button-container">
         <button  type="button" onclick="openPopup()" name="submit" class="button" id="loginButton" >Login</button>
         <button type="button" onclick="redirectToPage()" class="buttonsignup" id="signupButton">Sign Up</button>
