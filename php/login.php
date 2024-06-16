@@ -13,7 +13,9 @@
             $stmt = $connection->prepare("SELECT dtUsername FROM tblUsers WHERE dtEmail = ? AND dtPassword= ? ");
             $stmt->bind_param("ss", $email, $password);
             $stmt->execute();
-            $_SESSION['username'] = $stmt->get_result();
+            $stmt->bind_result($username);
+            $stmt->fetch();
+            $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             $stmt->close();
             $connection->close();
