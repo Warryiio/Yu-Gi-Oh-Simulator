@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['uesrname']) && !isset($_SESSION['enail'])) {
+    if(!isset($_SESSION['username']) && !isset($_SESSION['email'])) {
         header("Location: /Yu-Gi-Oh-Simulator/?notLoggedIn=true");  
         exit;
     }

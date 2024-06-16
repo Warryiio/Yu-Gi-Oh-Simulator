@@ -66,14 +66,14 @@
     <?php if (isset($_GET['success']) && $_GET['success'] == 'true') { ?>
         <script>
             $(document).ready(function() {
-            success();
+                success();
             });
         </script>
     <?php } ?>
     <?php if (isset($_GET['error']) && $_GET['error'] == 'true') { ?>
         <script>
             $(document).ready(function() {
-            error();
+                error();
             });
         </script>
     <?php } ?>

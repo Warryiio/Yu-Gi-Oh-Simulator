@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     @include 'connect.php';
     if(isset($_POST['submit'])) {
         $email = $_POST['email'];
@@ -11,7 +10,10 @@
         $result = $stmt->get_result();
 
         if ($result->num_rows != 0) {
-            $_SESSION['username'] = $username;
+            $stmt = $connection->prepare("SELECT dtUsername FROM tblUsers WHERE dtEmail = ? AND dtPassword= ? ");
+            $stmt->bind_param("ss", $email, $password);
+            $stmt->execute();
+            $_SESSION['username'] = $stmt->get_result();
             $_SESSION['email'] = $email;
             $stmt->close();
             $connection->close();
