@@ -30,11 +30,29 @@
 
     <div class=popup id="popup">
         <img id="status" height src="/Yu-Gi-Oh-Simulator/images/red.png" width="150" />
-        <h2 id="message">Something went wrong</h2>
-        <p id="details">Your Username or Email is already used</p>
+        <h3 id="message">Something went wrong</h3>
+        <p id="details">Your Email or Password is wrong</p>
         <button type="button" class="popupButton" onclick="closePopup()">OK</button>
     </div>
     
-    
+    <script>
+        let popup= document.getElementById("popup");
+        // Gibt den div popup die Klasse open-popup und wird dadruch sichtbar
+        function openPopup() {
+            popup.classList.add("open-popup");
+
+        }
+        // Entfernt den div popup die Klasse open-popup und wird dadruch unsichtbar
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+    </script>
+    <?php if (isset($_GET['error']) && $_GET['error'] == 'true') { ?>
+        <script>
+            $(document).ready(function() {
+                openPopup();
+            });
+        </script>
+    <?php } ?>
 </body>
 </html>
