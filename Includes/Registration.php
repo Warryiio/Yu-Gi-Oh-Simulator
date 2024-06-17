@@ -62,6 +62,12 @@
             document.getElementById("details").innerHTML = "Your Account has been created";
             openPopup();
         }
+        function emailError() {
+            document.getElementById("status").src= "/Yu-Gi-Oh-Simulator/images/red.png";
+            document.getElementById("message").innerHTML = "Something went wrong";
+            document.getElementById("details").innerHTML = "Please use and valid email!";
+            openPopup();
+        }
     </script>
     <?php if (isset($_GET['success']) && $_GET['success'] == 'true') { ?>
         <script>
@@ -77,5 +83,25 @@
             });
         </script>
     <?php } ?>
+    <?php if (isset($_GET['emailError']) && $_GET['emailError'] == 'true') { ?>
+        <script>
+            $(document).ready(function() {
+                emailError();
+            });
+        </script>
+    <?php } ?>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            const emailInput = document.getElementById('email');
+            const errorSpan = document.querySelector('.error');
+
+            if (!emailInput.validity.valid) {
+                errorSpan.textContent = 'Please enter a valid email ending with @gmail.com, @yahoo.com, @outlook.com, or @hotmail.com.';
+                event.preventDefault();
+            } else {
+                errorSpan.textContent = '';
+            }
+        });
+    </script>
 </body>
 </html>
