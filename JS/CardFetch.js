@@ -1,18 +1,17 @@
 $(document).ready(function() {
     let selectedCards = [];
     let availableCards = [];
-
+    let idCounter = 0;
     // Fetch cards from a mock API using AJAX
     $.ajax({
         url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php', // Replace with your actual API endpoint
         method: 'GET',
         data : {
-            banlist: 'ban_goat'
+            format: 'goat'
         },
         success: function(cards) {
-            console.log(cards)
-            availableCards = cards; // Store the fetched cards
-            renderCardList(cards); // Render the initial card list
+            availableCards = cards.data; // Store the fetched cards
+            renderCardList(cards.data); // Render the initial card list
         },
         error: function(error) {
             console.error('Error fetching cards:', error);
@@ -21,20 +20,18 @@ $(document).ready(function() {
 
     // Render the card list
     function renderCardList(cards) {
-        let cardId=0;
         $('#card-list').empty();
-        cards.data.forEach(card => {
-
+        cards.forEach(card => {
+            const id=idCounter;
             $('#card-list').append(`
-    
-                <div class="cards" data-id="${cardId}">
+                <div class="cards" data-id="${id}">
                     <img src="${card.card_images[0].image_url_small}" alt="${card.name}" width="100"><br>
                     ${card.name} 
                     <br>
                     <button class="add-card">Add</button>
                 </div>
             `);
-            cardId++;
+            idCounter++;
         });
     }
 
@@ -58,14 +55,15 @@ $(document).ready(function() {
     $(document).on('click', '.add-card', function() {
         const cardId = $(this).parent().data('id');
         selectedCards.push(cardId);
-        renderSelectedCards(getCards());
+        renderSelectedCards();
     });
 
     // Remove card from the selected list
     $(document).on('click', '.remove-card', function() {
         const cardId = $(this).parent().data('id');
-        delete selectedCards[cardId];
-        renderSelectedCards();
+        const index = selectedCards.indexOf(cardId);
+            selectedCards.splice(index, 1);
+            renderSelectedCards();
     });
 
     // Save the deck to LocalStorage
@@ -88,6 +86,7 @@ $(document).ready(function() {
 
     // Load and display saved decks
     function loadSavedDecks() {
+        
         const savedDecks = JSON.parse(localStorage.getItem('decks')) || [];
         $('#saved-decks').empty();
         savedDecks.forEach(deck => {

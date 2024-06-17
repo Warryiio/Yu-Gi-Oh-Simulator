@@ -79,7 +79,7 @@ body {
 </style>
 <script>
         function redirectToDecksAndCards() {
-            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Deck Builder.html";
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/DeckBuilder.php";
         }
 
         function redirectToPlay() {

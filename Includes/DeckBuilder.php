@@ -1,9 +1,12 @@
+<?php
+  @include('../php/checkSession.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Yu-Gi-Oh! Deck Builder</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/DeckStyles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -13,8 +16,8 @@
         <button id="save-deck">Save Deck</button>
         <br>
         <br>
-        <input type="text" id="card-name" placeholder="Search Card">
-        <button id="search-card">Search Card</button>
+        <input type="text" id="search-cards" placeholder="Search Card">
+        
     </div>
 
     <h2>Available Cards</h2>
@@ -31,6 +34,6 @@
         <ul id="saved-decks"></ul>
     </div>
 
-    <script src="app.js"></script>
+    <script src="/Yu-Gi-Oh-Simulator/JS/CardFetch.js"></script>
 </body>
 </html>
