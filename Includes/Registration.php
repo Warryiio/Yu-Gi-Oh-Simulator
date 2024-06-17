@@ -22,7 +22,7 @@
         <div class="register-container">
             <input type="text" id="username" name="username" placeholder="Username" required>
             <br>
-            <input type="text" id="email" name="email" placeholder="E-Mail" pattern=".*@.*" title="Please include an '@' in the email address." required>
+            <input type="text" id="email" name="email" placeholder="E-Mail" pattern="^[\w\.-]+@(?:gmail\.com|yahoo\.com|outlook\.com|hotmail\.com|school\.lu)$"  title="Please include an '@' in the email address." required>
             <br>
             <input type="password" id="password" name="password" placeholder="Password" required>
             <br>

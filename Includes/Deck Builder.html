@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Yu-Gi-Oh! Deck Builder</title>
-    <link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/DeckStyles.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
 </head>
 <body>
     <h1>Yu-Gi-Oh! Deck Builder</h1>
@@ -17,19 +16,21 @@
         <input type="text" id="card-name" placeholder="Search Card">
         <button id="search-card">Search Card</button>
     </div>
-    
-    <div class="card-list-container">
-        <h2>Available Cards</h2>
-        <ul id="card-list"></ul>
+
+    <h2>Available Cards</h2>
+    <div class="card-list-container" id="card-list">
+        
     </div>
-    <div>
-        <h2>Selected Cards</h2>
-        <ul id="selected-cards"></ul>
+
+    <h2>Selected Cards</h2>
+    <div  class="card-list-container" id="selected-cards">
+
     </div>
     <div>
         <h2>Saved Decks</h2>
         <ul id="saved-decks"></ul>
     </div>
-    <script src="/Yu-Gi-Oh-Simulator/JS/CardFetch.js"></script>
+
+    <script src="app.js"></script>
 </body>
 </html>

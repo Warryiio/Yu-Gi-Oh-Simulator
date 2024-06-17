@@ -4,7 +4,7 @@
             $username= $_POST['username'];
             $email = $_POST['email'];
             $password =$_POST['password'];
-
+            
             $stmt = $connection->prepare("SELECT id FROM tblUsers WHERE dtEmail = ? OR dtUsername= ? ");
             $stmt->bind_param("ss", $email, $username);
             $stmt->execute();
