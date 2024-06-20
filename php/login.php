@@ -4,24 +4,16 @@
     if(isset($_POST['submit'])) {
         $email = $_POST['email'];
         $password =$_POST['password'];
-        $stmt = $connection->prepare("SELECT id FROM tblUsers WHERE dtEmail = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows != 0) {
-            $stmt = $connection->prepare("SELECT dtPassword FROM tblUsers WHERE dtEmail = ?");
+        $stmt = $connection->prepare("SELECT id, dtUsername, dtPassword FROM tblUsers WHERE dtEmail = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
-            $hashed_pass= $stmt->get_result();
-            echo ""+password_verify($password,$hashed_pass);
-            if(password_verify($password,$hashed_pass)){
-            $stmt = $connection->prepare("SELECT dtUsername FROM tblUsers WHERE dtEmail = ?");
-            $stmt->bind_param("ss", $email, );
-            $stmt->execute();
-            $stmt->bind_result($username);
-            $stmt->fetch();
+            $stmt->store_result();
+            $stmt->bind_result($id,$username,$hashed_pass);
 
+        if ($stmt->num_rows != 0) {
+            $stmt->fetch();
+            if(password_verify($password,$hashed_pass)){
+            $_SESSION['id']=$id;
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             $stmt->close();
