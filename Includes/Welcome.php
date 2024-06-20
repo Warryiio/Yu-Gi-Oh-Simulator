@@ -138,6 +138,7 @@ Home page{
 <h2 id="Home page">This is the home page, where you can freely navigate through our other sections</h2><br>
 <h2>The play section is where you access the actual game with the Deck you've built</h2><br>
 <h2>The Decks and cards section is where you can see all the available cards and build and save a deck that is linked to your account</h2><br>
+<a href="/Yu-Gi-Oh-Simulator/Includes/Rules.php"> If you want more information about the cards or the rules please  </a>
 <!-- <img src="https://wallpaperaccess.com/full/188687.jpg" alt="background"> 
 https://jooinn.com/images/empty-space-1.png
 https://farm4.staticflickr.com/3895/14894440797_30b2d83d87_b.jpg -->
