@@ -20,8 +20,9 @@
                     $stmt->close();
                     header("Location: /Yu-Gi-Oh-Simulator/Includes/Registration.php?error=true");
                 } else {
+                    $hashed_pass= password_hash($password,PASSWORD_DEFAULT);
                     $stmt = $connection->prepare("INSERT INTO tblUsers (dtUsername, dtEmail, dtPassword) VALUES (?, ?, ?)");
-                    $stmt->bind_param("sss", $username, $email, $password);
+                    $stmt->bind_param("sss", $username, $email, $hashed_pass);
                     $stmt->execute();
                     $stmt->close();
                     header("Location: /Yu-Gi-Oh-Simulator/Includes/Registration.php?success=true");

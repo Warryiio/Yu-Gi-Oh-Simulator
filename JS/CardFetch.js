@@ -78,10 +78,18 @@ $(document).ready(function() {
             savedDecks.push(deck);
             localStorage.setItem('decks', JSON.stringify(savedDecks));
             alert('Deck saved successfully!');
-            loadSavedDecks();
+            $.ajax({
+                url: 'save_deck.php',
+                method: 'POST',
+                data: { deck: JSON.stringify(deck), deck_name: deckName },
+                success: function(response) {
+                    alert(response);
+                }
+            });
         } else {
             alert('Please provide a deck name and select at least one card.');
         }
+        
     });
 
     // Load and display saved decks
