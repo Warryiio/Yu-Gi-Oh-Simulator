@@ -30,9 +30,11 @@
 
     </div>
     <div>
-        <h2>Saved Decks</h2>
-        <ul id="saved-decks"></ul>
+        <h2>Load Deck</h2>
+        <select id="deck-select"></select>
+        <button id="load-deck">Load Deck</button>
     </div>
+
 
     <script src="/Yu-Gi-Oh-Simulator/JS/CardFetch.js"></script>
 </body>

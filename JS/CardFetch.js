@@ -1,7 +1,7 @@
 $(document).ready(function() {
     let selectedCards = [];
     let availableCards = [];
-    let idCounter = 0;
+    let deck = [];
     // Fetch cards from a mock API using AJAX
     $.ajax({
         url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php', // Replace with your actual API endpoint
@@ -10,7 +10,8 @@ $(document).ready(function() {
             format: 'goat'
         },
         success: function(cards) {
-            availableCards = cards.data; // Store the fetched cards
+            console.log(cards.data[0].id)
+            availableCards = cards; // Store the fetched cards
             renderCardList(cards.data); // Render the initial card list
         },
         error: function(error) {
@@ -22,16 +23,14 @@ $(document).ready(function() {
     function renderCardList(cards) {
         $('#card-list').empty();
         cards.forEach(card => {
-            const id=idCounter;
             $('#card-list').append(`
-                <div class="cards" data-id="${id}">
+                <div class="cards" data-id="${card.id}">
                     <img src="${card.card_images[0].image_url_small}" alt="${card.name}" width="100"><br>
                     ${card.name} 
                     <br>
                     <button class="add-card">Add</button>
                 </div>
             `);
-            idCounter++;
         });
     }
 
@@ -39,29 +38,47 @@ $(document).ready(function() {
     function renderSelectedCards() {
         $('#selected-cards').empty();
             selectedCards.forEach(cardId => {
-            $('#selected-cards').append(`
-                <div class="cards" data-id="${cardId}">
-                    <img src="${availableCards.data[cardId].card_images[0].image_url_small}" alt="${availableCards.data[cardId].name}" width="100"> 
-                    <br>
-                    ${availableCards.data[cardId].name} 
-                    <br>
-                    <button class="remove-card">Remove</button>
-                </div>
-            `);
+                let i=0;
+                let result= -1;
+                while(i<availableCards.data.length && result==-1){
+                    if(availableCards.data[i].id==cardId){
+                        result=availableCards.data[i];
+                    } else {
+                        i++;
+                    }
+                }
+                if(result!=availableCards){
+                    $('#selected-cards').append(`
+                        <div class="cards" data-id="${cardId}">
+                            <img src="${result.card_images[0].image_url_small}" alt="${result.name}" width="100"> 
+                            <br>
+                            ${result.name} 
+                            <br>
+                            <button class="remove-card">Remove</button>
+                        </div>
+                    `); 
+                }
+            
         });
     }
 
     // Add card to the selected list
     $(document).on('click', '.add-card', function() {
-        const cardId = $(this).parent().data('id');
-        selectedCards.push(cardId);
+        let cardId = $(this).parent().data('id');
+        let count = 0;
+        selectedCards.forEach((id) => (id == cardId && count++));
+        if (count < 4) {
+            selectedCards.push(cardId);
+        }else {
+            alert('You can only add up to 4 of the same card.');
+        }
         renderSelectedCards();
     });
 
     // Remove card from the selected list
     $(document).on('click', '.remove-card', function() {
-        const cardId = $(this).parent().data('id');
-        const index = selectedCards.indexOf(cardId);
+        let cardId = $(this).parent().data('id');
+        let index = selectedCards.indexOf(cardId);
             selectedCards.splice(index, 1);
             renderSelectedCards();
     });
@@ -69,51 +86,89 @@ $(document).ready(function() {
     // Save the deck to LocalStorage
     $('#save-deck').click(function() {
         const deckName = $('#deck-name').val();
-        if (deckName && Object.keys(selectedCards).length > 0) {
-            const deck = {
-                name: deckName,
-                cards: selectedCards
-            };
-            const savedDecks = JSON.parse(localStorage.getItem('decks')) || [];
-            savedDecks.push(deck);
-            localStorage.setItem('decks', JSON.stringify(savedDecks));
-            alert('Deck saved successfully!');
-            $.ajax({
-                url: 'save_deck.php',
-                method: 'POST',
-                data: { deck: JSON.stringify(deck), deck_name: deckName },
-                success: function(response) {
-                    alert(response);
+            let i=0;
+            let result= -1;
+            while(i<availableCards.data.length && result==-1){
+                if(availableCards.data[i].id==selectedCards[0]){
+                    result=availableCards.data[i];
+                } else {
+                    i++;
                 }
-            });
-        } else {
-            alert('Please provide a deck name and select at least one card.');
+            }
+        const image= result.card_images[0].image_url_small;
+        if( Object.keys(selectedCards).length > 39){
+            if (deckName && Object.keys(selectedCards).length> 0) {
+                alert('Deck saved successfully!');
+                $.ajax({
+                    url: '/Yu-Gi-Oh-Simulator/php/saveDeck.php',
+                    method: 'POST',
+                    data: { deck: JSON.stringify(selectedCards), deck_name: deckName, image: image },
+                    success: function(response) {
+                        alert(response);
+                        loadDecks();
+                    }
+                });
+            } else {
+                alert('Please provide a deck name and select at least one card.');
+            }
+        } else{
+            alert('Have at least 40 Cards in the deck.');
         }
         
-    });
-
-    // Load and display saved decks
-    function loadSavedDecks() {
         
-        const savedDecks = JSON.parse(localStorage.getItem('decks')) || [];
-        $('#saved-decks').empty();
-        savedDecks.forEach(deck => {
-            let deckCardDetails = [];
-            for (let cardId in deck.cards) {
-                const card = availableCards.find(c => c.id === parseInt(cardId));
-                const count = deck.cards[cardId];
-                deckCardDetails.push(`${card.name} (x${count})`);
+        
+    });
+    function loadDecks() {
+        $.ajax({
+            url: '/Yu-Gi-Oh-Simulator/php/listDecks.php',
+            method: 'GET',
+            success: function(response) {
+                var decks = JSON.parse(response);
+                $('#deck-select').empty();
+                decks.forEach(function(deck) {
+                    $('#deck-select').append(`
+                        <div class="deck-option" data-deck-id="${deck.id}">
+                            <img src="${deck.first_card_image}" alt="First Card" class="deck-image">
+                            <span>${deck.name}</span>
+                        </div>
+                    `);
+                });
+    
+                // Add click event to deck options to select the deck
+                $('.deck-option').click(function() {
+                    var selectedDeckId = $(this).data('deck-id');
+                    $('#deck-select .deck-option').removeClass('selected');
+                    $(this).addClass('selected');
+                    $('#deck-select').val(selectedDeckId);
+                });
             }
-            $('#saved-decks').append(`<li>${deck.name}: ${deckCardDetails.join(', ')}</li>`);
         });
     }
 
+    // Load and display saved decks
+    $('#load-deck').click(function() {
+        loadDecks()
+        //var selectedDeck = $('#deck-select').val();
+        //if (selectedDeck) {
+        //    $.ajax({
+        //        url: '/Yu-Gi-Oh-Simulator/php/loadDeck.php',
+        //        method: 'GET',
+         //       data: { id: selectedDeck },
+        //        success: function(response) {
+         //           deck = JSON.parse(response.cards);
+         //           selectedCards=deck;
+        //        }
+        //    });
+       // }
+    });
+
+
     // Filter the card list based on the search query
     $('#search-cards').on('input', function() {
-        const query = $(this).val().toLowerCase();
-        const filteredCards = availableCards.filter(card => card.name.toLowerCase().startsWith(query));
+        let searchName = $(this).val().toLowerCase();
+        let filteredCards = availableCards.data.filter(card => card.name.toLowerCase().startsWith(searchName));
         renderCardList(filteredCards);
     });
 
-    loadSavedDecks(); // Load saved decks on page load
+
 });
