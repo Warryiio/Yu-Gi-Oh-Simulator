@@ -27,14 +27,19 @@
 
     <h2>Selected Cards</h2>
     <div  class="card-list-container" id="selected-cards">
-
+    </div>
+    <h2>Extra Monsters</h2>
+    <div  class="card-list-container" id="extra-cards">
     </div>
     <div>
         <h2>Load Deck</h2>
         <select id="deck-select"></select>
         <button id="load-deck">Load Deck</button>
     </div>
-
+    <div>
+        <h2>Saved Decks</h2>
+        <ul id="saved-decks"></ul>
+    </div>
 
     <script src="/Yu-Gi-Oh-Simulator/JS/CardFetch.js"></script>
 </body>

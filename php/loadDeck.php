@@ -1,21 +1,29 @@
 <?php
 session_start();
-   @include 'connect.php';
+    @include 'connect.php';
+    $username = $_SESSION['username'];
+    $stmt = $connection->prepare("SELECT id, dtDeckName, dtCards, dtImage FROM tblDecks WHERE dtUsername = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-   if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    $deck_id = $_GET['id'];
-
-    $sql = "SELECT cards FROM decks WHERE id = '$deck_id'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $deck = $result->fetch_assoc();
-        echo json_encode($deck);
-    } else {
-        echo "No deck found";
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $data = [];
+        foreach ($result as $res) {
+            $t = [];
+            $t['id'] = $res['id'];
+            $t['deckName'] = $res['dtDeckName'];
+            $t['cards'] = $res['dtCards'];
+            $t['image'] = $res['dtImage'];
+            $data[] = $t;
+        }
+        echo json_encode(['results' => $data]);
     }
+} else {
+    echo "0 results";
 }
 
-$conn->close();
-
+$stmt->close();
+$connection->close();
 ?>

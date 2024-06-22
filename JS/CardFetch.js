@@ -1,6 +1,8 @@
 $(document).ready(function() {
     let selectedCards = [];
     let availableCards = [];
+    let extraCards=[];
+    let currentDeckIndex=-1;
     let deck = [];
     // Fetch cards from a mock API using AJAX
     $.ajax({
@@ -10,7 +12,7 @@ $(document).ready(function() {
             format: 'goat'
         },
         success: function(cards) {
-            console.log(cards.data[0].id)
+            console.log(cards)
             availableCards = cards; // Store the fetched cards
             renderCardList(cards.data); // Render the initial card list
         },
@@ -47,8 +49,32 @@ $(document).ready(function() {
                         i++;
                     }
                 }
-                if(result!=availableCards){
+                if(result!=-1){
                     $('#selected-cards').append(`
+                        <div class="cards" data-id="${cardId}">
+                            <img src="${result.card_images[0].image_url_small}" alt="${result.name}" width="100"> 
+                            <br>
+                            ${result.name} 
+                            <br>
+                            <button class="remove-card">Remove</button>
+                        </div>
+                    `); 
+                }
+            
+        });
+        $('#extra-cards').empty();
+            extraCards.forEach(cardId => {
+                let i=0;
+                let result= -1;
+                while(i<availableCards.data.length && result==-1){
+                    if(availableCards.data[i].id==cardId){
+                        result=availableCards.data[i];
+                    } else {
+                        i++;
+                    }
+                }
+                if(result!=-1){
+                    $('#extra-cards').append(`
                         <div class="cards" data-id="${cardId}">
                             <img src="${result.card_images[0].image_url_small}" alt="${result.name}" width="100"> 
                             <br>
@@ -65,12 +91,31 @@ $(document).ready(function() {
     // Add card to the selected list
     $(document).on('click', '.add-card', function() {
         let cardId = $(this).parent().data('id');
+        let i=0;
+        let result= -1;
         let count = 0;
-        selectedCards.forEach((id) => (id == cardId && count++));
+         while(i<availableCards.data.length && result==-1){
+            if(availableCards.data[i].id==cardId){
+                result=availableCards.data[i];
+            } else {
+                i++;
+            }
+        }
+        console.log(result.type);
+        if(result.type=="Fusion Monster"){
+            extraCards.forEach((id) => (id == cardId && count++));
+            if (count < 4) {
+                extraCards.push(cardId);
+            }else {
+                alert('You can only add up to 4 of the same card.');
+            }
+        }else {
+            selectedCards.forEach((id) => (id == cardId && count++));
         if (count < 4) {
             selectedCards.push(cardId);
         }else {
             alert('You can only add up to 4 of the same card.');
+        }
         }
         renderSelectedCards();
     });
@@ -118,48 +163,40 @@ $(document).ready(function() {
         
         
     });
-    function loadDecks() {
+    function loadSavedDecks() {
         $.ajax({
-            url: '/Yu-Gi-Oh-Simulator/php/listDecks.php',
+            url: '/Yu-Gi-Oh-Simulator/php/loadDeck.php',
             method: 'GET',
             success: function(response) {
-                var decks = JSON.parse(response);
-                $('#deck-select').empty();
-                decks.forEach(function(deck) {
-                    $('#deck-select').append(`
-                        <div class="deck-option" data-deck-id="${deck.id}">
-                            <img src="${deck.first_card_image}" alt="First Card" class="deck-image">
-                            <span>${deck.name}</span>
+                const savedDecks = JSON.parse(response);
+                $('#saved-decks').empty();
+                savedDecks.results.forEach(deck => {
+                    $('#saved-decks').append(`
+                        <div data-cards="${deck.cards}">
+                            <img src="${deck.image}" alt="${deck.deckName}" width="100">
+                            <br>
+                            ${deck.deckName}
+                            <br>
+                            <button class="edit-deck">Edit</button>
                         </div>
                     `);
                 });
-    
-                // Add click event to deck options to select the deck
-                $('.deck-option').click(function() {
-                    var selectedDeckId = $(this).data('deck-id');
-                    $('#deck-select .deck-option').removeClass('selected');
-                    $(this).addClass('selected');
-                    $('#deck-select').val(selectedDeckId);
-                });
+            },
+            error: function(error) {
+                console.error('Error loading decks:', error);
             }
         });
     }
-
-    // Load and display saved decks
-    $('#load-deck').click(function() {
-        loadDecks()
-        //var selectedDeck = $('#deck-select').val();
-        //if (selectedDeck) {
-        //    $.ajax({
-        //        url: '/Yu-Gi-Oh-Simulator/php/loadDeck.php',
-        //        method: 'GET',
-         //       data: { id: selectedDeck },
-        //        success: function(response) {
-         //           deck = JSON.parse(response.cards);
-         //           selectedCards=deck;
-        //        }
-        //    });
-       // }
+    $(document).on('click', '.edit-deck', function() {
+        console.log($(this).parent().data('cards'));
+        selectedCards = $(this).parent().data('cards');
+        currentDeckIndex = $(this).parent().data('id');
+        document.getElementById("save-deck").innerHTML="Update";
+        document.getElementById("save-deck").id="update-deck";
+        renderSelectedCards();
+        // Load the deck and display it for editing (not fully implemented here)
+        // You need to write additional code to fetch the specific deck details
+        // and populate the selectedCards object and deck name field for editing.
     });
 
 
@@ -170,5 +207,5 @@ $(document).ready(function() {
         renderCardList(filteredCards);
     });
 
-
+    loadSavedDecks();
 });
