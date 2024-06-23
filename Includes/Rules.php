@@ -85,24 +85,18 @@ body {font-family: "Lato", sans-serif;}
 
 <div id="Cards" class="tabcontent">
   <h3>Cards</h3>
-  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_monster_new2.jpg">
-  <p><b>Monster Cards</b></p>
-  <p>Monster Cards are protagonist of the battle!</p>
-  <p>Normal Monsters have no 《effects》.</p>
-  <p>Effect Monsters have special 《effects》 in addition to their basic stats.</p>
-  <p>Other powerful cards also exist such as Ritual, Fusion, Synchro, Xyz, Pendulum, and Link Monsters</p>
-  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_magic_new.jpg">
-  <p><b>Spell Cards</b></p>
-  <p>The《effects》 these cards can bring are far beyond your imagination! It’s a must to have!</p>
-  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_trap_new.jpg">
-  <p><b>Trap Cards</b></p>
-  <p>These cards may have specific conditions to be 《activated》, but their strong 《effects》 could be the key to turning a duel in your favor! 《Activate》trap to outsmart your opponent!</p>
+  <p>Cards are divided up in 3 sections: The top the middle and the bottom</p>
+  <p>On the top part there is the name and the stars of the card</p>
+  <p>On the middle there's the image and the attack (atk) and defence (def) stats points</p>
+  <p>At the bottom there are the cards abilities, which can range from none to multiple ones</p>
+  <p>The cards can be played in a defencive or attacking position</p>
+  <p>The cards can also be played upside-down with the back at the top</p>
 </div>
 
 <div id="Decks" class="tabcontent">
   <h3>Decks</h3>
   <p>The composed Decks are made up from 40 up to 60 different cards.</p>
-  <p>You can have the same card only up to 3 </p> 
+  <p>You can have the same card only up to 3 times per deck</p> 
   <p>Little advice: Try to have the smallest Deck possible as this reduces your chances to draw an unwanted card</p><br>
   <p style="color:Tomato;">For advanced players: You can have a extra deck that can hold maximum 15 cards</p> 
   <p style="color:Tomato;">It contains Xyz Monsters, Synchro Monsters and Fusion Monsters, in any combination.</p> 
@@ -114,7 +108,14 @@ body {font-family: "Lato", sans-serif;}
   <p>Note: This content doesn't resume every Rule of Yu-Gi-Oh, to have a complete version of the rules please click this link:</p>
   <a href="https://www.yugioh-card.com/en/rulebook/">Whole Ruleset</a>
   <p>The objective of Yu-Gi-Oh is simple ! </p>
-  <p>You can have the same card only up to 3 </p>
+  <p>You and your opponent have both 4000 health, the objective is to lower your opponents health to 0</p><br>
+  <p>The stars on the cards define how much sacrified cards are needed to be placed</p>
+  <p>From 1 to 4 stars: No sacrifice needed</p>
+  <p>From 5 to 8 stars: One sacrifice needed</p>
+  <p>From 9 to 13 stars: Two sacrifices needed</p><br>
+  <p>If a card agresses a card that has a higher attack it will be destroyed (in attacking position, flipped either way)</p>
+  <p>If a card agresses a card that has a higher defense it will be destroyed (in defensive position, flipped either way)</p>
+  <p>An attack on a empty field will reduce the opponents health directly from the health counter, a successful attack on a other card will destroy it</p>
 
 </div>
 
