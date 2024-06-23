@@ -10,6 +10,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    <style>
+        .top-left-button {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+        }
+        .top-left-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: black;
+            background-color: cyan; 
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        .top-left-button button:hover {
+            transform: scale(1.1);
+        }
+    </style>
     <h1>Yu-Gi-Oh! Deck Builder</h1>
     <div class="controls">
         <input type="text" id="deck-name" placeholder="Deck Name">
@@ -40,7 +62,16 @@
         <h2>Saved Decks</h2>
         <div id="saved-decks"></div>
     </div>
+    <script>
+        function redirectToDeckChooser(){
+            window.location.href="/Yu-Gi-Oh-Simulator/Includes/deckchooser.html"
+        }
 
+    </script>
+
+    <div class="top-left-button">
+        <button onclick="redirectToDeckChooser()">Back</button>
+    </div>
     <script src="/Yu-Gi-Oh-Simulator/JS/CardFetch.js"></script>
 </body>
 </html>

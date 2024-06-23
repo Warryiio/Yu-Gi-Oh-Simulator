@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Boxes with Buttons</title>
+    <style>
+        body {
+            background-image: url('/Yu-Gi-Oh-Simulator/images/image background deckbuilder.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            width: 500px;
+            height: 300px;
+            background-color: darkgray;
+            border: 5px solid blue;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box button {
+            padding: 20px 40px;
+            font-size: 20px;
+            color: white;
+            background-color: blue;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        .box button:hover {
+            transform: scale(1.1);
+        }
+        .back-box {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 90px;
+            height: 50px;
+            background-color: darkred;
+            border: 5px solid blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .back-box button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: blue;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        .back-box button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function redirectToHome(){
+            window.location.href="/Yu-Gi-Oh-Simulator/Includes/Welcome.php";
+        }
+        function redirectToCreateADeck(){
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/DeckBuilder.php";
+        }
+    </script>
+</head>
+<body>
+    <div class="back-box">
+        <button onclick="redirectToHome()">Back</button>
+    </div>
+    <div class="box">
+        <button>Online Decks</button>
+    </div>
+    <div class="box">
+        <button onclick="redirectToCreateADeck()">Create Decks</button>
+    </div>
+</body>
+</html>
