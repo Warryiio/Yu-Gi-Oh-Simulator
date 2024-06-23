@@ -16,7 +16,7 @@ body {font-family: "Lato", sans-serif;}
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   width: 30%;
-  height: 200px;
+  height: 258px;
 }
 
 /* Style the buttons inside the tab */
@@ -51,7 +51,23 @@ body {font-family: "Lato", sans-serif;}
   border: 1px solid #ccc;
   width: 70%;
   border-left: none;
-  height: 700px;
+  height: 600px;
+}
+#Field {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 1100px;
+}
+#Cards {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 1500px;
 }
 </style>
 </head>
@@ -64,11 +80,23 @@ body {font-family: "Lato", sans-serif;}
   <button class="tablinks" onclick="openCity(event, 'Cards')" id="defaultOpen">Cards</button>
   <button class="tablinks" onclick="openCity(event, 'Decks')">Decks</button>
   <button class="tablinks" onclick="openCity(event, 'Rules')">Rules</button>
+  <button class="tablinks" onclick="openCity(event, 'Field')">Game Field</button>
 </div>
 
 <div id="Cards" class="tabcontent">
   <h3>Cards</h3>
-  <p>The cards </p>
+  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_monster_new2.jpg">
+  <p><b>Monster Cards</b></p>
+  <p>Monster Cards are protagonist of the battle!</p>
+  <p>Normal Monsters have no 《effects》.</p>
+  <p>Effect Monsters have special 《effects》 in addition to their basic stats.</p>
+  <p>Other powerful cards also exist such as Ritual, Fusion, Synchro, Xyz, Pendulum, and Link Monsters</p>
+  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_magic_new.jpg">
+  <p><b>Spell Cards</b></p>
+  <p>The《effects》 these cards can bring are far beyond your imagination! It’s a must to have!</p>
+  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_trap_new.jpg">
+  <p><b>Trap Cards</b></p>
+  <p>These cards may have specific conditions to be 《activated》, but their strong 《effects》 could be the key to turning a duel in your favor! 《Activate》trap to outsmart your opponent!</p>
 </div>
 
 <div id="Decks" class="tabcontent">
@@ -88,6 +116,25 @@ body {font-family: "Lato", sans-serif;}
   <p>The objective of Yu-Gi-Oh is simple ! </p>
   <p>You can have the same card only up to 3 </p>
 
+</div>
+
+<div id="Field" class="tabcontent">
+  <h3>Game Field</h3>
+  <img src="https://www.yugioh-card.com/tw/howto/images/duel_field_2020e.jpg" size="200%">
+  <p>① Main Monster Zone</p>
+  <p>You can summon up to 5 monsters here!</p>
+  <p>② Spell & Trap Zone (Pendulum Zone)</p>
+  <p>Spells and Traps are activated or set in this zone! If Pendulum Monsters placed in the leftmost and rightmost zones as Spells, those zones will become Pendulum Zones, and you can activat their Pendulum effects or use it for Pendulum Summons!</p>
+  <p>③ Field Zone</p>
+  <p>Field Spells affect the entire field of play are placed here!</p>
+  <p>④ Graveyard</p>
+  <p>Place your destroyed Monsters and used Spells/Traps Cards here!</p>
+  <p>⑤ Extra Deck Zone</p>
+  <p>Put specific cards (Fusion, Synchro, Xyz, Link Monsters) which require special methods of summoning face-down here!</p>
+  <p>⑥ Deck Zone</p>
+  <p>Place your Main Deck face-down here! Draw your cards from here!</p>
+  <p>⑦ Extra Monster Zone</p>
+  <p>Reserved for monsters that are Special Summoned to the field from the Extra Deck normally</p>
 </div>
 
 <script>

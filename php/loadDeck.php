@@ -2,7 +2,7 @@
 session_start();
     @include 'connect.php';
     $username = $_SESSION['username'];
-    $stmt = $connection->prepare("SELECT id, dtDeckName, dtCards, dtImage FROM tblDecks WHERE dtUsername = ?");
+    $stmt = $connection->prepare("SELECT id, dtDeckName, dtCards, dtExtraCards , dtImage FROM tblDecks WHERE dtUsername = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -15,6 +15,7 @@ if ($result->num_rows > 0) {
             $t['id'] = $res['id'];
             $t['deckName'] = $res['dtDeckName'];
             $t['cards'] = $res['dtCards'];
+            $t['extraCards'] = $res['dtExtraCards'];
             $t['image'] = $res['dtImage'];
             $data[] = $t;
         }
