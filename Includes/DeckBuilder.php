@@ -11,6 +11,9 @@
 </head>
 <body>
     <h1>Yu-Gi-Oh! Deck Builder</h1>
+
+    <a href="/Yu-Gi-Oh-Simulator/Includes/Welcome.php"><button class="go-back">Go Back</button></a>
+
     <div class="controls">
         <input type="text" id="deck-name" placeholder="Deck Name">
         <button class="saving" id="save-deck">Save Deck</button>

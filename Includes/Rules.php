@@ -67,7 +67,7 @@ body {font-family: "Lato", sans-serif;}
   border: 1px solid #ccc;
   width: 70%;
   border-left: none;
-  height: 1500px;
+  height: 1700px;
 }
 </style>
 </head>
@@ -83,8 +83,22 @@ body {font-family: "Lato", sans-serif;}
   <button class="tablinks" onclick="openCity(event, 'Field')">Game Field</button>
 </div>
 
+
 <div id="Cards" class="tabcontent">
   <h3>Cards</h3>
+  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_monster_new2.jpg">
+  <p><b>Monster Cards</b></p>
+  <p>Monster Cards are protagonist of the battle!</p>
+  <p>Normal Monsters have no 《effects》.</p>
+  <p>Effect Monsters have special 《effects》 in addition to their basic stats.</p>
+  <p>Other powerful cards also exist such as Ritual, Fusion, Synchro, Xyz, Pendulum, and Link Monsters</p>
+  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_magic_new.jpg">
+  <p><b>Spell Cards</b></p>
+  <p>The《effects》 these cards can bring are far beyond your imagination! It’s a must to have!</p>
+  <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_trap_new.jpg">
+  <p><b>Trap Cards</b></p>
+  <p>These cards may have specific conditions to be 《activated》, but their strong 《effects》 could be the key to turning a duel in your favor! 《Activate》trap to outsmart your opponent!</p>
+  <p><b>How to read the Cards</b></p>
   <p>Cards are divided up in 3 sections: The top the middle and the bottom</p>
   <p>On the top part there is the name and the stars of the card</p>
   <p>On the middle there's the image and the attack (atk) and defence (def) stats points</p>

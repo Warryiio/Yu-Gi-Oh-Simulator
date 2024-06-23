@@ -133,7 +133,7 @@ Home page{
 }
 </style>
 
-<?php echo "<h1>Welcome ".  $_SESSION['username'] ." to our page </h1>"?> 
+<?php echo "<h1>Welcome to our page ".  $_SESSION['username'] ." </h1>"?> 
 <h2>Simulate battles with our website!</h2><br>
 <h2 id="Home page">This is the home page, where you can freely navigate through our other sections</h2><br>
 <h2>The play section is where you access the actual game with the Deck you've built</h2><br>
