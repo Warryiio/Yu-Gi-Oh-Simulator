@@ -1,44 +1,84 @@
-<?php
-  @include('../php/checkSession.php'); 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Yu-Gi-Oh! Deck Builder</title>
-    <link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/DeckStyles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deck List with Random Cards</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .deck-box {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .deck-box img {
+            width: 80px;
+            height: 120px;
+            margin: 10px;
+        }
+        .deck-name {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    
-    <h1>Yu-Gi-Oh! Deck Builder</h1>
 
-    <a href="/Yu-Gi-Oh-Simulator/Includes/DeckMenu.php"><button class="go-back">Go Back</button></a>
+<h1>Deck List</h1>
+<div id="deck-container"></div>
 
-
-        <div class="card-section">
-            <h2>Selected Cards</h2>
-            <div class="card-list-container" id="selected-cards"></div>
-        </div>
-
-        <div class="card-section">
-            <h2>Extra Monsters</h2>
-            <div class="card-list-container" id="extra-cards"></div>
-        </div>
-    </div>
-
-    <div class="all-decks-section">
-        <h2>All Decks</h2>
-        <div id="all-decks"></div>
-    </div>
-    <script>
-        function redirectToDeckChooser(){
-            window.location.href="/Yu-Gi-Oh-Simulator/Includes/deckchooser.html"
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        function getRandomCards(deck, count) {
+            let shuffled = deck.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
         }
 
-    </script>
+        function renderDecks(decks) {
+            $('#deck-container').empty();
+            decks.forEach(deck => {
+                let randomCards = getRandomCards(deck.cards, 2);
+                let deckBox = $('<div class="deck-box"></div>');
+                deckBox.append(`<div class="deck-name">${deck.deckName}</div>`);
+                randomCards.forEach(card => {
+                    deckBox.append(`<img src="${card.image}" alt="${card.name}">`);
+                });
+                $('#deck-container').append(deckBox);
+            });
+        }
 
+        function loadSavedDecks() {
+            $.ajax({
+                url: '/Yu-Gi-Oh-Simulator/php/loadDeck.php',
+                method: 'GET',
+                success: function (response) {
+                    const savedDecks = JSON.parse(response).results;
+                    renderDecks(savedDecks);
+                },
+                error: function (error) {
+                    console.error('Error loading decks:', error);
+                }
+            });
+        }
 
-    <script src="/Yu-Gi-Oh-Simulator/JS/ShowAllDecks"></script>
+        loadSavedDecks();
+    });
+</script>
+
 </body>
 </html>
+
