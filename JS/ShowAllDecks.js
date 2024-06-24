@@ -39,8 +39,6 @@ $(document).ready(function () {
                             <img src="${result.card_images[0].image_url_small}" alt="${result.name}" width="100"> 
                             <br>
                             ${result.name} 
-                            <br>
-                            <button class="remove-card">Remove</button>
                         </div>
                     `);
             }
@@ -63,8 +61,6 @@ $(document).ready(function () {
                             <img src="${result.card_images[0].image_url_small}" alt="${result.name}" width="100"> 
                             <br>
                             ${result.name} 
-                            <br>
-                            <button class="remove-card">Remove</button>
                         </div>
                     `);
             }
@@ -104,12 +100,6 @@ $(document).ready(function () {
         //All the arrays for the cards from the div are put into the attributes.
         selectedCards = $(this).parent().data('cards');
         extraCards = $(this).parent().data('extra');
-        //The id is saved so I know which the deck should get changed.
-        currentDeckIndex = $(this).parent().data('id');
-        //Changing the text and class of the "save-deck" button to update.
-        $('#save-deck').html("Update");
-        $('#save-deck').attr('class','updating')
-        //
         renderSelectedCards();
     });
 

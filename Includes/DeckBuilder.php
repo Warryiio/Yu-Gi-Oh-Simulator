@@ -42,7 +42,7 @@
 
     <div class="saved-decks-section">
         <h2>Saved Decks</h2>
-        <div id="saved-decks"></div>
+        <div class="card-list-container" id="saved-decks"></div>
     </div>
     <script>
         function redirectToDeckChooser(){
