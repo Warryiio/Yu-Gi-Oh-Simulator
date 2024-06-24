@@ -44,13 +44,8 @@
         <h2>Saved Decks</h2>
         <div class="card-list-container" id="saved-decks"></div>
     </div>
-    <script>
-        function redirectToDeckChooser(){
-            window.location.href="/Yu-Gi-Oh-Simulator/Includes/deckchooser.html"
-        }
-
-    </script>
-
+    
+    <button id="export-deck">Export Deck as YDK</button>
 
     <script src="/Yu-Gi-Oh-Simulator/JS/CardFetch.js"></script>
 </body>

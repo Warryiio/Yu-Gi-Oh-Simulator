@@ -6,14 +6,14 @@ $(document).ready(function () {
     let deck = [];
     // Fetch cards from a mock API using AJAX
     $.ajax({
-        url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php', // Replace with your actual API endpoint
+        url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php',
         method: 'GET',
         data: {
             format: 'goat'
         },
         success: function (cards) {
             availableCards = cards; // Store the fetched cards
-            renderCardList(cards.data); // Render the initial card list
+            renderCardList(availableCards.data); // Render the initial card list
         },
         error: function (error) {
             console.error('Error fetching cards:', error);
@@ -22,7 +22,9 @@ $(document).ready(function () {
 
     // Render the card list
     function renderCardList(cards) {
+        //Removing everything inside the card-list
         $('#card-list').empty();
+        //For all every Index in the array its gonna append a picture with a button inside a div in the card-list
         cards.forEach(card => {
             $('#card-list').append(`
                 <div class="cards" data-id="${card.id}">
@@ -37,7 +39,9 @@ $(document).ready(function () {
 
     // Render the selected card list
     function renderSelectedCards() {
+        //Removing everything inside the selected-cards
         $('#selected-cards').empty();
+        //Using the id of the card this algorithm is going to search for the card with the id
         selectedCards.forEach(cardId => {
             let i = 0;
             let result = -1;
@@ -48,6 +52,7 @@ $(document).ready(function () {
                     i++;
                 }
             }
+            //when the card is found and not -1 a picture with a remove button is getting appended at selected cards
             if (result != -1) {
                 $('#selected-cards').append(`
                         <div class="cards" data-id="${cardId}">
@@ -61,6 +66,7 @@ $(document).ready(function () {
             }
 
         });
+        //Removing everything inside the extra-cards
         $('#extra-cards').empty();
         extraCards.forEach(cardId => {
             let i = 0;
@@ -89,10 +95,13 @@ $(document).ready(function () {
 
     // Add card to the selected list
     $(document).on('click', '.add-card', function () {
+        //When clicking on the "add-card" button using "this" I get the button where I clicked and get id
+        //with parent which refers to the "div" and gets the "data-id"
         let cardId = $(this).parent().data('id');
         let i = 0;
         let result = -1;
         let count = 0;
+        //Searching for the card using the id
         while (i < availableCards.data.length && result == -1) {
             if (availableCards.data[i].id == cardId) {
                 result = availableCards.data[i];
@@ -100,14 +109,24 @@ $(document).ready(function () {
                 i++;
             }
         }
+        //Using the type I check if the card is a Fusion Monster or a Normal Monster
         if (result.type == "Fusion Monster") {
-            extraCards.forEach((id) => (id == cardId && count++));
-            if (count < 3) {
-                extraCards.push(cardId);
+            //Checking if the Extra Cards array has 15 cards and it's going to alert that i cant add any new cards
+            if(extraCards.length<14) {
+                //Counting every card with the same card so if I have more than 3 time the same card
+                //it's going to give out an alert that i cant add 3 time the same card
+                extraCards.forEach((id) => (id == cardId && count++));
+                if (count < 3) {
+                    extraCards.push(cardId);
+                } else {
+                    alert('You can only add up to 3 of the same card.');
+                }
             } else {
-                alert('You can only add up to 3 of the same card.');
+                alert("You can't have more than 15 Extra Cards")
             }
+            
         } else {
+            //Checking if the Normal Cards array has 60 cards and it's going to alert that i cant add any new cards
             if (selectedCards.length < 59) {
                 selectedCards.forEach((id) => (id == cardId && count++));
                 if (count < 3) {
@@ -115,6 +134,8 @@ $(document).ready(function () {
                 } else {
                     alert('You can only add up to 3 of the same card.');
                 }
+            } else {
+                alert("You can't have more than 60 Cards")
             }
 
         }
@@ -123,9 +144,12 @@ $(document).ready(function () {
 
     // Remove card from the selected list
     $(document).on('click', '.remove-card', function () {
+        //Getting the card trough "this" which refers to the remove-card button i clicked on
+        //and gives me the id from the "div" inside the "data-id"
         let cardId = $(this).parent().data('id');
         let i = 0;
         let result = -1;
+        //Searching for the card with the id
         while (i < availableCards.data.length && result == -1) {
             if (availableCards.data[i].id == cardId) {
                 result = availableCards.data[i];
@@ -133,8 +157,11 @@ $(document).ready(function () {
                 i++;
             }
         }
+        //Checking if the card is a Fusion Monster or a Normal Monster
         if (result.type == "Fusion Monster") {
+            //Getting the index of the cardid
             let index = extraCards.indexOf(cardId);
+            //removing the card with the index and the 1 means that only 1 object is getting removed
             extraCards.splice(index, 1);
             renderSelectedCards();
         } else {
@@ -156,11 +183,15 @@ $(document).ready(function () {
                     i++;
                 }
             }
+            //saving the card image
             const image = result.card_images[0].image_url_small;
+            //Checking if the class of the button save-deck is saving or updating
         if($('#save-deck').attr('class')=="saving"){
+            //Checking if it hase atleast 40 cards and a name
         if (selectedCards.length > 39) {
             if (deckName.length > 0) {
                 alert('Deck saved successfully!');
+                //Using ajax i post in "data" all the post to the php data to save the data
                 $.ajax({
                     url: '/Yu-Gi-Oh-Simulator/php/saveDeck.php',
                     method: 'POST',
@@ -201,9 +232,10 @@ $(document).ready(function () {
 
     });
 
-
+    //Fetching Decks from the database
     function loadSavedDecks() {
         $.ajax({
+            //using the method get i can get the data as response back.
             url: '/Yu-Gi-Oh-Simulator/php/loadDeck.php',
             method: 'GET',
             success: function (response) {
@@ -253,6 +285,39 @@ $(document).ready(function () {
         //Refering the method renderCardList and giving the all the filteredCards it shows all the cards.
         renderCardList(filteredCards);
     });
+
+    $('#export-deck').click(function() {
+        exportYDK(deck);
+    });
+
+    function exportYDK() {
+        // writes inside a text and using "\n" to make a break line
+        let ydkContent = '#created by ...\n#main\n';
+        //Adding all the cards inside the string
+        selectedCards.forEach(function(cardId) {
+            ydkContent += cardId + '\n';
+        });
+        ydkContent += '#extra\n';
+        extraCards.forEach(function(cardId) {
+            ydkContent += cardId + '\n';
+        });
+        ydkContent += '#side\n';
+        //Replacing everything that has a comma using /, and  
+        // /\s*/ means that it is going to remove all the spaces and tabs
+        // /g means that it is going to search trought the entire string
+        // and \n is what it's going to be replaced by which is a break line
+        var replacedStr = ydkContent.replace(/,\s*/g, "\n");
+        // Using blob(Binary Large Object) which can store raw data we store the string
+        // inside it and give it the type "text/plain" which means we store text
+        let blob = new Blob([replacedStr], { type: 'text/plain' });
+        //Creating a temporary element a to create a download link out of the link that is removed
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'deck.ydk';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 
     loadSavedDecks();
 });

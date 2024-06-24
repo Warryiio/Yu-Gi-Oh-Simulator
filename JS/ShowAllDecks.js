@@ -2,11 +2,9 @@ $(document).ready(function () {
     let selectedCards = [];
     let availableCards = [];
     let extraCards = [];
-    let currentDeckIndex = -1;
-    let deck = [];
     // Fetch cards from a mock API using AJAX
     $.ajax({
-        url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php', // Replace with your actual API endpoint
+        url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php', 
         method: 'GET',
         data: {
             format: 'goat'
@@ -99,8 +97,27 @@ $(document).ready(function () {
         //goes to the div and gets the data-cards, data-extra and data-id inside the div.
         //All the arrays for the cards from the div are put into the attributes.
         selectedCards = $(this).parent().data('cards');
-        extraCards = $(this).parent().data('extra');
+        extraCards = $(this).parent().data('extra'); 
         renderSelectedCards();
+    });
+    $('#export-deck').click(function() {
+        let ydkContent = '#created by ...\n#main\n';
+        selectedCards.forEach(function(cardId) {
+            ydkContent += cardId + '\n';
+        });
+        ydkContent += '#extra\n';
+        extraCards.forEach(function(cardId) {
+            ydkContent += cardId + '\n';
+        });
+        ydkContent += '#side\n';
+        var replacedStr = ydkContent.replace(/,\s*/g, "\n");
+        let blob = new Blob([replacedStr], { type: 'text/plain' });
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'deck.ydk';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     });
 
     loadAllDecks();

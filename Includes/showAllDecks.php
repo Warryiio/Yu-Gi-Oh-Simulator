@@ -31,13 +31,7 @@
             <div class="card-list-container" id="extra-cards"></div>
         </div>
     </div>
-
-    <script>
-        function redirectToDeckChooser(){
-            window.location.href="/Yu-Gi-Oh-Simulator/Includes/deckchooser.html"
-        }
-
-    </script>
+    <button id="export-deck">Export Deck as YDK</button>
 
 
     <script src="/Yu-Gi-Oh-Simulator/JS/ShowAllDecks.js"></script>
