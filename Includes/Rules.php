@@ -10,6 +10,9 @@
     <title>Document</title>
 </head>
 <body>
+<div class="back-box">
+        <a href="/Yu-Gi-Oh-Simulator/Includes/Welcome.php"><button onclick="redirectToHome()">Back</button></a>
+    </div>
 
 <h2>Cards, Decks and Rules</h2>
 <p>Click on the buttons to see the different topics</p>
