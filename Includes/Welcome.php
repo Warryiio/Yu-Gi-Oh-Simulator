@@ -66,7 +66,7 @@ body {
   margin: 4px 2px;
   opacity: 0.6;
   transition: 0.3s;
-  
+  float: right;
 }
 
 
