@@ -32,7 +32,7 @@ h1, h2 {
     background-color: #333;
     display: grid;
     grid-template-columns: 100px 100px 100px 100px;
-    column-gap: 50px;
+    column-gap: 20px;
     row-gap: 5px;
     padding: 10px;
     overflow-y: auto;
@@ -86,6 +86,7 @@ input[type="text"] {
 }
 
 .go-back {
+    float:right;
   background-color: #61dafb;
   border: none;
   color: #333;
