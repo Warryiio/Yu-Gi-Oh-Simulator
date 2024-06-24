@@ -5,81 +5,13 @@
 <html>
 <head>
 <title>Yu-Gi-Oh Simulator</title>
+<link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/Welcome.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  
-}
 
-.topnav {
-  overflow: hidden;
-  background-color: #BDBDBD;
-  background-image: url('https://jooinn.com/images/empty-space-1.png');
-}
-
-.home {
-  background-color: #01579B;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  opacity: 0.6;
-  transition: 0.3s;
-}
-
-.play {
-  background-color: #0D47A1;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  opacity: 0.6;
-  transition: 0.3s;
-}
-
-.cards {
-  background-color: #1A237E;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  opacity: 0.6;
-  transition: 0.3s;
-}
-
-.logout {
-  background-color: #451A6D;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
-  opacity: 0.6;
-  transition: 0.3s;
-  float: right;
-}
-
-
-.home:hover  {opacity: 1}
-.play:hover  {opacity: 1}
-.cards:hover {opacity: 1}
-.logout:hover{opacity: 1}
-
-
-</style>
 <script>
         function redirectToDecksAndCards() {
-            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/Deckchooser.php";
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/DeckMenu.php";
         }
 
         function redirectToPlay() {
