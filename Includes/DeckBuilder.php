@@ -10,28 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <style>
-        .top-left-button {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-        }
-        .top-left-button button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: black;
-            background-color: cyan; 
-            border: none;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.2s ease-in-out;
-        }
-        .top-left-button button:hover {
-            transform: scale(1.1);
-        }
-    </style>
+    
     <h1>Yu-Gi-Oh! Deck Builder</h1>
 
     <a href="/Yu-Gi-Oh-Simulator/Includes/Welcome.php"><button class="go-back">Go Back</button></a>

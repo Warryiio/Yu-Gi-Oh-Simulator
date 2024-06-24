@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Styled Boxes with Buttons</title>
-    <style>
-        body {
+body {
             background-image: url('/Yu-Gi-Oh-Simulator/images/image background deckbuilder.jpg');
             background-size: cover; 
             background-position: center; 
@@ -69,25 +62,3 @@
         .back-box button:hover {
             transform: scale(1.1);
         }
-    </style>
-    <script>
-        function redirectToHome(){
-            window.location.href="/Yu-Gi-Oh-Simulator/Includes/Welcome.php";
-        }
-        function redirectToCreateADeck(){
-            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/DeckBuilder.php";
-        }
-    </script>
-</head>
-<body>
-    <div class="back-box">
-        <button onclick="redirectToHome()">Back</button>
-    </div>
-    <div class="box">
-        <button onclick="redirectToOnlineDecks()">Online Decks</button>
-    </div>
-    <div class="box">
-        <button onclick="redirectToCreateADeck()">Create Decks</button>
-    </div>
-</body>
-</html>
