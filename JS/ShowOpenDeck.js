@@ -22,7 +22,7 @@ $(document).ready(function () {
 
     function loadSavedDecks() {
         $.ajax({
-            url: '/Yu-Gi-Oh-Simulator/php/loadDeck.php',
+            url: '/Yu-Gi-Oh-Simulator/php/showSavedDeck.php',
             method: 'GET',
             success: function (response) {
                 const savedDecks = JSON.parse(response);
