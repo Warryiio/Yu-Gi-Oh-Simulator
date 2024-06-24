@@ -1,18 +1,29 @@
 <?php
 session_start();
-@include 'connect.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $deck = $_POST['deck'];
-    $extraDeck = $_POST['extraDeck'];
-    $deck_name = $_POST['deck_name'];
-    $image = $_POST['image'];
+    @include 'connect.php';
     $username = $_SESSION['username'];
-    $stmt = $connection->prepare("INSERT INTO tblOpenDecks (dtUsername, dtDeckName, dtCards, dtExtraCards , dtImage) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $username, $deck_name, $deck, $extraDeck , $image);
+    $stmt = $connection->prepare("SELECT id, dtDeckName, dtCards, dtExtraCards , dtImage FROM tblDecks");
     $stmt->execute();
-    $stmt->close();
-    
+    $result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $data = [];
+        foreach ($result as $res) {
+            $t = [];
+            $t['id'] = $res['id'];
+            $t['deckName'] = $res['dtDeckName'];
+            $t['cards'] = $res['dtCards'];
+            $t['extraCards'] = $res['dtExtraCards'];
+            $t['image'] = $res['dtImage'];
+            $data[] = $t;
+        }
+        echo json_encode(['results' => $data]);
+    }
+} else {
+    echo "0 results";
 }
 
+$stmt->close();
 $connection->close();
 ?>
