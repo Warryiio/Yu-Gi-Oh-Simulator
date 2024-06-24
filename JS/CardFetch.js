@@ -226,25 +226,31 @@ $(document).ready(function () {
             }
         });
     }
+    //By clicking on the edit deck button this function is called.
     $(document).on('click', '.edit-deck', function () {
+        //Using "this" I get the button where I pressed and by using parent it
+        //goes to the div and gets the data-cards, data-extra and data-id inside the div.
+        //All the arrays for the cards from the div are put into the attributes.
         selectedCards = $(this).parent().data('cards');
         extraCards = $(this).parent().data('extra');
+        //The id is saved so I know which the deck should get changed.
         currentDeckIndex = $(this).parent().data('id');
+        //Changing the text and class of the "save-deck" button to update.
         $('#save-deck').html("Update");
         $('#save-deck').attr('class','updating')
-        console.log('erfolg');
-        console.log( $('#save-deck').attr('class'))
+        //
         renderSelectedCards();
-        // Load the deck and display it for editing (not fully implemented here)
-        // You need to write additional code to fetch the specific deck details
-        // and populate the selectedCards object and deck name field for editing.
     });
 
 
-    // Filter the card list based on the search query
+    // When giving the Textfield an input the function is called.
     $('#search-cards').on('input', function () {
-        let searchName = $(this).val().toLowerCase();
+        //the search is getting the text form the textfield and makes it lowercased.
+        let searchName = $('#search-cards').val().toLowerCase();
+        //Using the filter for the array it searches the name of the card and makes it lowercased and searches 
+        //everything starting with the input. After filtering all the cards it give "filteredCards" all the card it found.
         let filteredCards = availableCards.data.filter(card => card.name.toLowerCase().startsWith(searchName));
+        //Refering the method renderCardList and giving the all the filteredCards it shows all the cards.
         renderCardList(filteredCards);
     });
 

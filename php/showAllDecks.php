@@ -1,7 +1,5 @@
 <?php
-session_start();
     @include 'connect.php';
-    $username = $_SESSION['username'];
     $stmt = $connection->prepare("SELECT id, dtDeckName, dtCards, dtExtraCards , dtImage FROM tblDecks");
     $stmt->execute();
     $result = $stmt->get_result();

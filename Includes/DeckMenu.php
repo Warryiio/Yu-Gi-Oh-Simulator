@@ -15,15 +15,18 @@
         function redirectToCreateADeck(){
             window.location.href = "/Yu-Gi-Oh-Simulator/Includes/DeckBuilder.php";
         }
+        function redirectToAllDecks() {
+            window.location.href = "/Yu-Gi-Oh-Simulator/Includes/ShowAllDecks.php"
+        }
     </script>
     <div class="back-box">
         <button onclick="redirectToHome()">Back</button>
     </div>
     <div class="box">
-        <a href="/Yu-Gi-Oh-Simulator/Includes/showAllDecks.php"><button>Online Decks</button></a>
+        <button id="allDecks" onclick="redirectToAllDecks()">Online Decks</button>
     </div>
     <div class="box">
-        <button onclick="redirectToCreateADeck()">Create Decks</button>
+        <button id="createDeck" onclick="redirectToCreateADeck()">Create Decks</button>
     </div>
 </body>
 </html>
