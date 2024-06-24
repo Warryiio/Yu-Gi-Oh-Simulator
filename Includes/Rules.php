@@ -14,6 +14,7 @@
 <h2>Cards, Decks and Rules</h2>
 <p>Click on the buttons to see the different topics</p>
 
+<!-- These lines of code define which category selected is and therefore which text is shown -->
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'Cards')" id="defaultOpen">Cards</button>
   <button class="tablinks" onclick="openCity(event, 'Decks')">Decks</button>
@@ -21,7 +22,7 @@
   <button class="tablinks" onclick="openCity(event, 'Field')">Game Field</button>
 </div>
 
-
+<!-- This text shows what is written in the category "Cards" -->
 <div id="Cards" class="tabcontent">
   <h3>Cards</h3>
   <img src="https://www.yugioh-card.com/tw/howto/images/type_of_card_monster_new2.jpg">
@@ -45,6 +46,7 @@
   <p>The cards can also be played upside-down with the back at the top</p>
 </div>
 
+<!-- This text shows what is written in the category "Decks" -->
 <div id="Decks" class="tabcontent">
   <h3>Decks</h3>
   <p>The composed Decks are made up from 40 up to 60 different cards.</p>
@@ -55,6 +57,7 @@
 
 </div>
 
+<!-- This text shows what is written in the category "Rules" -->
 <div id="Rules" class="tabcontent">
   <h3>Rules</h3>
   <p>Note: This content doesn't resume every Rule of Yu-Gi-Oh, to have a complete version of the rules please click this link:</p>
@@ -71,6 +74,7 @@
 
 </div>
 
+<!-- This text shows what is written in the category "Field" -->
 <div id="Field" class="tabcontent">
   <h3>Game Field</h3>
   <img src="https://www.yugioh-card.com/tw/howto/images/duel_field_2020e.jpg" size="200%">
@@ -90,6 +94,7 @@
   <p>Reserved for monsters that are Special Summoned to the field from the Extra Deck normally</p>
 </div>
 
+<!-- This function defines which category is open -->
 <script>
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
@@ -105,7 +110,7 @@ function openCity(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
-// Get the element with id="defaultOpen" and click on it
+// Get the element with id="defaultOpen" and open it when the website is loaded
 document.getElementById("defaultOpen").click();
 </script>
 </body>
