@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #BDBDBD;
+    background-image: url('https://jooinn.com/images/empty-space-1.png');
+  }
+  
+  .home {
+    background-color: #01579B;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+  
+  .play {
+    background-color: #0D47A1;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+  
+  .cards {
+    background-color: #1A237E;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+  }
+  
+  .logout {
+    background-color: #451A6D;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    float: right;
+  }
+  
+  
+  .home:hover  {opacity: 1}
+  .play:hover  {opacity: 1}
+  .cards:hover {opacity: 1}
+  .logout:hover{opacity: 1}
+  
+  
