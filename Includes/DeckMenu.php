@@ -20,7 +20,7 @@
         <button onclick="redirectToHome()">Back</button>
     </div>
     <div class="box">
-        <button onclick="redirectToOnlineDecks()">Online Decks</button>
+        <a href="/Yu-Gi-Oh-Simulator/Includes/showAllDecks.php"><button>Online Decks</button></a>
     </div>
     <div class="box">
         <button onclick="redirectToCreateADeck()">Create Decks</button>
