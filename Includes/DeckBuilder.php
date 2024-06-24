@@ -13,7 +13,7 @@
     
     <h1>Yu-Gi-Oh! Deck Builder</h1>
 
-    <a href="/Yu-Gi-Oh-Simulator/Includes/Welcome.php"><button class="go-back">Go Back</button></a>
+    <a href="/Yu-Gi-Oh-Simulator/Includes/DeckMenu.php"><button class="go-back">Go Back</button></a>
 
     <div class="controls">
         <input type="text" id="deck-name" placeholder="Deck Name">
@@ -51,9 +51,7 @@
 
     </script>
 
-    <div class="top-left-button">
-        <button onclick="redirectToDeckChooser()">Back</button>
-    </div>
+
     <script src="/Yu-Gi-Oh-Simulator/JS/CardFetch.js"></script>
 </body>
 </html>
