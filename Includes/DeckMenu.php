@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/Deckchooser.css">
+    <link rel="stylesheet" href="/Yu-Gi-Oh-Simulator/CSS/DeckMenu.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Styled Boxes with Buttons</title>
     
