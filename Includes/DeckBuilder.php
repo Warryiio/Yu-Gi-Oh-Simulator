@@ -1,6 +1,7 @@
 <?php
   @include('../php/checkSession.php'); 
 ?>
+<!--Kai-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //Kai
     let selectedCards = [];
     let availableCards = [];
     let extraCards = [];

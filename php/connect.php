@@ -1,5 +1,5 @@
 <?php 
-
+    //Luka
     $hostname = '89.58.47.144'; // Der Hostname der Datenbank
     $username = 'YGO_User'; // Der MySQL-Benutzername
     $password = 'ygopw'; // Das MySQL-Passwort

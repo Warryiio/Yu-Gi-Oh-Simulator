@@ -1,6 +1,7 @@
 <?php
   @include('../php/checkSession.php'); 
 ?>
+<!--Dinis -->
 <!DOCTYPE html>
 <html>
 <head>

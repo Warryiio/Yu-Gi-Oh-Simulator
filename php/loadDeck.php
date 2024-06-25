@@ -1,5 +1,6 @@
 <?php
-session_start();
+    //Kai
+    session_start();
     @include 'connect.php';
     $username = $_SESSION['username'];
     $stmt = $connection->prepare("SELECT id, dtDeckName, dtCards, dtExtraCards , dtImage FROM tblDecks WHERE dtUsername = ?");

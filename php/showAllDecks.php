@@ -1,4 +1,5 @@
 <?php
+    //Luka
     @include 'connect.php';
     $stmt = $connection->prepare("SELECT id, dtDeckName, dtCards, dtExtraCards , dtImage FROM tblDecks");
     $stmt->execute();

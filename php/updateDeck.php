@@ -1,4 +1,5 @@
 <?php
+//Kai
 session_start();
 @include 'connect.php'; // Ensure this includes your database connection code
 
