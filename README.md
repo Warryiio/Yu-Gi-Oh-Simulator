@@ -1,1 +1,1 @@
-TELEINF school project
+TEINF School Project
